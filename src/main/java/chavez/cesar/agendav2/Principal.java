@@ -57,6 +57,11 @@ public class Principal extends javax.swing.JFrame {
         JM_Inicio.add(JMI_Captura);
 
         JMI_Salir.setText("Salir");
+        JMI_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMI_SalirActionPerformed(evt);
+            }
+        });
         JM_Inicio.add(JMI_Salir);
 
         JMB_Menu.add(JM_Inicio);
@@ -92,6 +97,13 @@ public class Principal extends javax.swing.JFrame {
         // Mostramos la pantalla
         ventana.setVisible(true);
     }//GEN-LAST:event_JMI_CapturaActionPerformed
+
+    private void JMI_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SalirActionPerformed
+        // TODO add your handling code here:
+        
+        System.exit(0);
+        System.out.println("ADIÓS");
+    }//GEN-LAST:event_JMI_SalirActionPerformed
 
     /**
      * @param args the command line arguments

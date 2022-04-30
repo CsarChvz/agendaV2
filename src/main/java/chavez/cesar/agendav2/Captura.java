@@ -255,6 +255,11 @@ public class Captura extends javax.swing.JInternalFrame {
         JB_Eliminar.setText("Eliminar");
 
         JB_Salir.setText("Salir");
+        JB_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JP_Panel3Layout = new javax.swing.GroupLayout(JP_Panel3);
         JP_Panel3.setLayout(JP_Panel3Layout);
@@ -379,6 +384,7 @@ public class Captura extends javax.swing.JInternalFrame {
         String apellido = JT_Apellido.getText().toUpperCase();
         String domicilio = JT_Domicilio.getText().toUpperCase();
         String telefono = JT_Telefono.getText().toUpperCase();
+        String email = JT_Email.getText().toUpperCase();
         int edad = Integer.parseInt(JT_Edad.getText());
         
         Date fecha = JD_DateChooser.getDate();
@@ -392,7 +398,9 @@ public class Captura extends javax.swing.JInternalFrame {
             sexo = "Femenino";
         }
         Metodos enlace = new Metodos();
-        enlace.Agregar(nombre, apellido, domicilio, telefono, sexo, sexo, sexo, edad, fis, longitud);
+        
+        // Falta los valores de las imagenes
+        enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
     }//GEN-LAST:event_JB_AgregarActionPerformed
 
     private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BuscarActionPerformed
@@ -427,9 +435,16 @@ public class Captura extends javax.swing.JInternalFrame {
                     JR_Femenino.setSelected(true);
                 }
             }
-            mostrarFoto(Integer.parseInt(JL_ID2.getText()));
+            mostrarFoto(Integer.parseInt(JL_ID.getText()));
         }
     }//GEN-LAST:event_JB_BuscarActionPerformed
+
+    private void JB_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SalirActionPerformed
+        // TODO add your handling code here:
+        
+        System.exit(0);
+        System.out.println("ADIÓS");
+    }//GEN-LAST:event_JB_SalirActionPerformed
 
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
