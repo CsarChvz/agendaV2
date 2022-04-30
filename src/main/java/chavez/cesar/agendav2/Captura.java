@@ -403,6 +403,22 @@ public class Captura extends javax.swing.JInternalFrame {
         enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
     }//GEN-LAST:event_JB_AgregarActionPerformed
 
+    
+    private void mostrarFoto(int ID) {
+        Metodos enlace = new Metodos();
+        byte[] resultado = enlace.obtenerFoto(ID);
+        if (resultado == null) {
+            JOptionPane.showMessageDialog(rootPane, "La persona no tiene foto");
+        } else {
+            try {
+                imgFoto = convertirImagen(resultado);
+                Icon icono = new ImageIcon(imgFoto.getScaledInstance(JL_Foto.getWidth(), JL_Foto.getHeight(), Image.SCALE_DEFAULT));
+                JL_Foto.setIcon(icono);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(rootPane, "Error al abrir la foto. \n" + ex);
+            }
+        }
+    }
     private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BuscarActionPerformed
         Metodos enlace = new Metodos();
         nomabus = JOptionPane.showInternalInputDialog(rootPane, "Nombre a Buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
@@ -427,15 +443,18 @@ public class Captura extends javax.swing.JInternalFrame {
                     Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
                 }
 
-                JT_Edad.setText(resultado[7]);
+                JT_Edad.setText(resultado[8]);
 
-                if (resultado[8].equals("Masculino")) {
+                if (resultado[7].equals("Masculino")) {
                     JR_Masculino.setSelected(true);
                 } else {
                     JR_Femenino.setSelected(true);
                 }
             }
+            
+            // Error aqui
             mostrarFoto(Integer.parseInt(JL_ID.getText()));
+            // mostrarFoto(Integer.parseInt(JL_ID.getText()));
         }
     }//GEN-LAST:event_JB_BuscarActionPerformed
 
@@ -456,21 +475,7 @@ public class Captura extends javax.swing.JInternalFrame {
         ImageReadParam irp = ir.getDefaultReadParam();
         return ir.read(0, irp);
     }
-    private void mostrarFoto(int ID) {
-        Metodos enlace = new Metodos();
-        byte[] resultado = enlace.obtenerFoto(ID);
-        if (resultado == null) {
-            JOptionPane.showMessageDialog(rootPane, "La persona no tiene foto");
-        } else {
-            try {
-                imgFoto = convertirImagen(resultado);
-                Icon icono = new ImageIcon(imgFoto.getScaledInstance(JL_Foto.getWidth(), JL_Foto.getHeight(), Image.SCALE_DEFAULT));
-                JL_Foto.setIcon(icono);
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(rootPane, "Error al abrir la foto. \n" + ex);
-            }
-        }
-    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
