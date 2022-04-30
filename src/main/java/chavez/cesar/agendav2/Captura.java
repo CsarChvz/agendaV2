@@ -37,6 +37,17 @@ public class Captura extends javax.swing.JInternalFrame {
      */
     public Captura() {
         initComponents();
+        JD_DateChooser.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent pce) {
+                if(JD_DateChooser.getDate() != null){
+                    Date fecha = JD_DateChooser.getDate();
+                    Date fechaSistema = new Date();
+                    int anio = (int)(((fechaSistema.getTime()- fecha.getTime())/86400000)/365);
+                    JT_Edad.setText(String.valueOf(anio));
+                }
+            }
+        });
     }
 
     FileInputStream fis;
@@ -416,7 +427,7 @@ public class Captura extends javax.swing.JInternalFrame {
                     JR_Femenino.setSelected(true);
                 }
             }
-            mostrarFoto(Integer.parseInt(JL_ID.getText()));
+            mostrarFoto(Integer.parseInt(JL_ID2.getText()));
         }
     }//GEN-LAST:event_JB_BuscarActionPerformed
 
