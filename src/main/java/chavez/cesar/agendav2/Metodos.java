@@ -51,7 +51,7 @@ public String[] Buscar(String nomabus){
                 try{
                     ResultSet rs = instruccion.executeQuery();
                     while(rs.next()){
-                        resultado[0]=rs.getString("Id");
+                        resultado[0]=rs.getString("id");
                         resultado[1]=rs.getString("Nombre");
                         resultado[2]=rs.getString("Apellido");
                         resultado[3]=rs.getString("Domicilio");
@@ -125,7 +125,7 @@ public String[] Buscar(String nomabus){
             try {
                 ResultSet rs = instruccion.executeQuery();
                 while (rs.next()) {
-                    resultado = rs.getBytes("Id");
+                    resultado = rs.getBytes("Foto");
                 }
                 rs.close();
             } catch (SQLException ex) {

@@ -453,7 +453,7 @@ public class Captura extends javax.swing.JInternalFrame {
             }
             
             // Error aqui
-            mostrarFoto(Integer.parseInt(JL_ID.getText()));
+            mostrarFoto(Integer.parseInt(JL_ID2.getText()));
             // mostrarFoto(Integer.parseInt(JL_ID.getText()));
         }
     }//GEN-LAST:event_JB_BuscarActionPerformed
