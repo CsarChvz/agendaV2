@@ -66,7 +66,6 @@ public class Captura extends javax.swing.JInternalFrame {
         JFCFoto = new javax.swing.JFileChooser();
         JP_Panel1 = new javax.swing.JPanel();
         JL_Nombre = new javax.swing.JLabel();
-        JT_Nombre = new javax.swing.JTextField();
         JL_Apellido = new javax.swing.JLabel();
         JT_Apellido = new javax.swing.JTextField();
         JL_Domicilio = new javax.swing.JLabel();
@@ -84,13 +83,9 @@ public class Captura extends javax.swing.JInternalFrame {
         JL_ID2 = new javax.swing.JLabel();
         JL_Edad = new javax.swing.JLabel();
         JT_Edad = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        JT_Nombre = new javax.swing.JTextField();
         JP_Panel2 = new javax.swing.JPanel();
         JL_Foto = new javax.swing.JLabel();
         JB_Foto = new javax.swing.JButton();
@@ -102,20 +97,6 @@ public class Captura extends javax.swing.JInternalFrame {
         JB_Salir = new javax.swing.JButton();
 
         JL_Nombre.setText("Nombre");
-
-        JT_Nombre.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                JT_NombrePropertyChange(evt);
-            }
-        });
-        JT_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                JT_NombreKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                JT_NombreKeyTyped(evt);
-            }
-        });
 
         JL_Apellido.setText("Apellido");
 
@@ -151,19 +132,15 @@ public class Captura extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
-
         jLabel4.setText("jLabel4");
 
         jLabel5.setText("jLabel5");
 
-        jLabel6.setText("jLabel6");
-
-        jLabel7.setText("jLabel7");
-
-        jLabel8.setText("jLabel8");
+        JT_Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JT_NombreFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout JP_Panel1Layout = new javax.swing.GroupLayout(JP_Panel1);
         JP_Panel1.setLayout(JP_Panel1Layout);
@@ -173,62 +150,55 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JP_Panel1Layout.createSequentialGroup()
-                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
-                                .addComponent(JL_Apellido)
+                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JP_Panel1Layout.createSequentialGroup()
+                                .addComponent(JL_Sexo)
                                 .addGap(18, 18, 18)
-                                .addComponent(JT_Apellido))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
-                                .addComponent(JL_FechaNacimiento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(JD_DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
-                                .addComponent(JL_Domicilio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(JT_Domicilio))
+                                .addComponent(JR_Femenino)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JR_Masculino))
+                            .addGroup(JP_Panel1Layout.createSequentialGroup()
+                                .addComponent(JL_Edad)
+                                .addGap(18, 18, 18)
+                                .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(JP_Panel1Layout.createSequentialGroup()
+                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
                                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(JL_Telefono)
                                     .addComponent(JL_Email))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JT_Telefono)
+                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(JT_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                     .addComponent(JT_Email)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
-                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JL_Nombre)
-                                    .addComponent(JL_ID))
-                                .addGap(18, 18, 18)
-                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(JL_ID2)
-                                    .addComponent(JT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(JL_FechaNacimiento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JD_DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
+                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
+                                        .addComponent(JL_Domicilio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(JT_Domicilio))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
+                                        .addComponent(JL_Apellido)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JT_Apellido))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_Panel1Layout.createSequentialGroup()
+                                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(JL_Nombre)
+                                            .addComponent(JL_ID))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JL_ID2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                    .addGroup(JP_Panel1Layout.createSequentialGroup()
-                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JP_Panel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JL_Sexo)
-                                .addGap(18, 18, 18)
-                                .addComponent(JR_Femenino)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JR_Masculino)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(JP_Panel1Layout.createSequentialGroup()
-                                .addComponent(JL_Edad)
-                                .addGap(18, 18, 18)
-                                .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(57, 57, 57))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(57, 57, 57))))
         );
         JP_Panel1Layout.setVerticalGroup(
             JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,13 +211,11 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(JT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JL_Apellido)
-                    .addComponent(JT_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(JT_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JL_Domicilio)
@@ -266,21 +234,16 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JL_FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(JP_Panel1Layout.createSequentialGroup()
-                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JD_DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                        .addComponent(JD_DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JR_Femenino)
                             .addComponent(JR_Masculino)
-                            .addComponent(JL_Sexo)
-                            .addComponent(jLabel7))
+                            .addComponent(JL_Sexo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(JL_Edad)))))
+                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JL_Edad))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -382,10 +345,10 @@ public class Captura extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JP_Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JP_Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(JP_Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -439,11 +402,12 @@ public class Captura extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_JB_FotoActionPerformed
-
+    
+    
     private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
         // TODO add your handling code here:
-           if(!JT_Apellido.getText().isEmpty())
-        String nombre = JT_Nombre.getText().toUpperCase() camposVacios=JT
+        String campo = "Campos";
+        String nombre = JT_Nombre.getText().toUpperCase();
         String apellido = JT_Apellido.getText().toUpperCase();
         String domicilio = JT_Domicilio.getText().toUpperCase();
         String telefono = JT_Telefono.getText().toUpperCase();
@@ -456,12 +420,27 @@ public class Captura extends javax.swing.JInternalFrame {
         if(JR_Masculino.isSelected()){
             sexo = "Masculino";
         } else {
-        
+            
             sexo = "Femenino";
         }   
         
+        if(nombre.isEmpty()){
+            System.out.println("Nombre vacio");
+            campo = campo.concat("+Nombre");
+        }
+        if (apellido.isEmpty()) {
+            System.out.println("Apellido vacio");
+            campo = campo.concat("+Apellido");
+        }
+        
+        if (domicilio.isEmpty()) {
+            System.out.println("Domicilio vacio");
+            campo = campo.concat("Apellido");
+        }
+        
+        System.out.println(campo);
+
            
-        if()
         
         // Comprobacion de los input
         // --Primero se tiene que comprobar que todos tengan algo, entonces
@@ -469,8 +448,7 @@ public class Captura extends javax.swing.JInternalFrame {
        // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
        // Entonces podemos devolver una alerta que diga que falta
        // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
-        System.out.println("Chars --------");
-        System.out.println(email.isEmpty());
+
         Metodos enlace = new Metodos();
         
         // Falta los valores de las imagenes
@@ -539,28 +517,19 @@ public class Captura extends javax.swing.JInternalFrame {
         System.out.println("ADIÓS");
     }//GEN-LAST:event_JB_SalirActionPerformed
 
-    private void JT_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JT_NombreKeyReleased
-        // TODO add your handling code here:e
-    }//GEN-LAST:event_JT_NombreKeyReleased
-
-    private void JT_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JT_NombreKeyTyped
-
-    }//GEN-LAST:event_JT_NombreKeyTyped
-
-    private void JT_NombrePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_JT_NombrePropertyChange
-        // TODO add your handling code here:
-        System.out.println(JT_Nombre.getText());
-
-    }//GEN-LAST:event_JT_NombrePropertyChange
-
     private void JT_EmailInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_JT_EmailInputMethodTextChanged
         // TODO add your handling code here:
         if(!JT_Email.getText().isEmpty()){
-            JT_Email.getText() != regex
-        } else {
+            // Poner que coincida con el regex, si no coincide, entoncs modificaremos el label segun correspondiente 
+       } else {
             
         }
     }//GEN-LAST:event_JT_EmailInputMethodTextChanged
+
+    private void JT_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusGained
+        // TODO add your handling code here:    
+        
+    }//GEN-LAST:event_JT_NombreFocusGained
 
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
@@ -606,12 +575,7 @@ public class Captura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JT_Email;
     private javax.swing.JTextField JT_Nombre;
     private javax.swing.JTextField JT_Telefono;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

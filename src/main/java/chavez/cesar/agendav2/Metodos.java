@@ -112,7 +112,6 @@ public String[] Buscar(String nomabus){
         
     }
     
-    
     public byte[] obtenerFoto(int ID) {
 
         byte[] resultado = new byte[127];
