@@ -413,6 +413,7 @@ public class Captura extends javax.swing.JInternalFrame {
         String telefono = JT_Telefono.getText().toUpperCase();
         String email = JT_Email.getText().toUpperCase();
         int edad = Integer.parseInt(JT_Edad.getText());
+        String edadCampo = JT_Edad.getText();
         Date fecha = JD_DateChooser.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
         String fechaNacimiento = sdf.format(fecha);
@@ -425,36 +426,74 @@ public class Captura extends javax.swing.JInternalFrame {
             sexo = "Femenino";
         }   
         
+        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi 
+        // {nombre: valorNombre,
+        //  apellido: apellido,
+        //  etc,
+        //          }
+        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
+        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
+        // Nombre
         if(nombre.isEmpty()){
             System.out.println("Nombre vacio");
             campo = campo.concat("+Nombre");
         }
+        // Apellido
         if (apellido.isEmpty()) {
             System.out.println("Apellido vacio");
             campo = campo.concat("+Apellido");
         }
-        
+        // Domicilio
         if (domicilio.isEmpty()) {
             System.out.println("Domicilio vacio");
             campo = campo.concat("+Domicilio");
         }
+        // Telefono
         if (telefono.isEmpty()) {
             System.out.println("Telefono vacio");
             campo = campo.concat("+Telefono");
         }
+        // Email
         if (email.isEmpty()) {
             System.out.println("Email vacio");
             campo = campo.concat("+Email");
         }
-        // Faltaria la fecha
+        // Faltaria la fecha la cual se puede sacar con la edad
+        // Edad
+        if(edadCampo.isEmpty()){
+            System.out.println("Edad vacio");
+            campo = campo.concat("+Edad");
+
+        }
+        
+        // En la parte de los botones, se tiene que poner un grupo para que se escoja uno de esos
         
         System.out.println(campo);
 
         if("Campos:".equals(campo)){
             System.out.println(campo);
+            // Si no hay ningun campo vacio
+           // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
+           //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
+            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere agregar?");
+            // Saber que retorna si presiona
+            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
+            System.out.println(nomabusPa);
+
+            if(0 != nomabusPa){
+                System.out.println("Nos cancela");
+                System.exit(0);
+                System.out.println("ADIÓS");
+            } else {
+                
+                Metodos enlace = new Metodos();
+                // Falta los valores de las imagenes
+                enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
+            }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Falta");
-        }
+            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar");
+        } 
            
         
         // Comprobacion de los input
@@ -464,10 +503,6 @@ public class Captura extends javax.swing.JInternalFrame {
        // Entonces podemos devolver una alerta que diga que falta
        // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
 
-        Metodos enlace = new Metodos();
-        
-        // Falta los valores de las imagenes
-        enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
     }//GEN-LAST:event_JB_AgregarActionPerformed
 
     
