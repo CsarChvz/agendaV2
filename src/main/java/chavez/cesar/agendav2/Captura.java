@@ -406,7 +406,7 @@ public class Captura extends javax.swing.JInternalFrame {
     
     private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
         // TODO add your handling code here:
-        String campo = "Campos";
+        String campo = "Campos:";
         String nombre = JT_Nombre.getText().toUpperCase();
         String apellido = JT_Apellido.getText().toUpperCase();
         String domicilio = JT_Domicilio.getText().toUpperCase();
@@ -417,6 +417,7 @@ public class Captura extends javax.swing.JInternalFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
         String fechaNacimiento = sdf.format(fecha);
         String sexo;
+        
         if(JR_Masculino.isSelected()){
             sexo = "Masculino";
         } else {
@@ -435,11 +436,25 @@ public class Captura extends javax.swing.JInternalFrame {
         
         if (domicilio.isEmpty()) {
             System.out.println("Domicilio vacio");
-            campo = campo.concat("Apellido");
+            campo = campo.concat("+Domicilio");
         }
+        if (telefono.isEmpty()) {
+            System.out.println("Telefono vacio");
+            campo = campo.concat("+Telefono");
+        }
+        if (email.isEmpty()) {
+            System.out.println("Email vacio");
+            campo = campo.concat("+Email");
+        }
+        // Faltaria la fecha
         
         System.out.println(campo);
 
+        if("Campos:".equals(campo)){
+            System.out.println(campo);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Falta");
+        }
            
         
         // Comprobacion de los input
