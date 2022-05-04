@@ -27,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         JDP_Principal = new javax.swing.JDesktopPane();
+        Fondo = new javax.swing.JLabel();
         JMB_Menu = new javax.swing.JMenuBar();
         JM_Inicio = new javax.swing.JMenu();
         JMI_Captura = new javax.swing.JMenuItem();
@@ -35,15 +36,23 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Fondo.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/fondo.jpg")); // NOI18N
+
+        JDP_Principal.setLayer(Fondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout JDP_PrincipalLayout = new javax.swing.GroupLayout(JDP_Principal);
         JDP_Principal.setLayout(JDP_PrincipalLayout);
         JDP_PrincipalLayout.setHorizontalGroup(
             JDP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JDP_PrincipalLayout.createSequentialGroup()
+                .addComponent(Fondo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         JDP_PrincipalLayout.setVerticalGroup(
             JDP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(JDP_PrincipalLayout.createSequentialGroup()
+                .addComponent(Fondo)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         JM_Inicio.setText("Inicio");
@@ -141,6 +150,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JDesktopPane JDP_Principal;
     private javax.swing.JMenuBar JMB_Menu;
     private javax.swing.JMenuItem JMI_Captura;

@@ -418,7 +418,7 @@ public class Captura extends javax.swing.JInternalFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
         String fechaNacimiento = sdf.format(fecha);
         String sexo;
-        
+
         if(JR_Masculino.isSelected()){
             sexo = "Masculino";
         } else {
@@ -463,12 +463,11 @@ public class Captura extends javax.swing.JInternalFrame {
         if(edadCampo.isEmpty()){
             System.out.println("Edad vacio");
             campo = campo.concat("+Edad");
-
         }
         
-        // En la parte de los botones, se tiene que poner un grupo para que se escoja uno de esos
-        
-        System.out.println(campo);
+        if(!    campo.contains("Femenino")){
+            
+        }
 
         if("Campos:".equals(campo)){
             System.out.println(campo);
@@ -490,6 +489,8 @@ public class Captura extends javax.swing.JInternalFrame {
                 Metodos enlace = new Metodos();
                 // Falta los valores de las imagenes
                 enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
+                JOptionPane.showMessageDialog(rootPane, "OPeracion con exito");
+                System.exit(0);
             }
         } else {
             // Split y luego pop
