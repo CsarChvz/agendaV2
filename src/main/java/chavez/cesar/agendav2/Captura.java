@@ -492,7 +492,8 @@ public class Captura extends javax.swing.JInternalFrame {
                 enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar");
+            // Split y luego pop
+            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
         } 
            
         
