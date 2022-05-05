@@ -58,7 +58,7 @@ public class Captura extends javax.swing.JInternalFrame {
     int longitud;
     Image imgFoto;
     String nomabus;
-
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -256,7 +256,7 @@ public class Captura extends javax.swing.JInternalFrame {
         JL_Foto.setBackground(new java.awt.Color(255, 255, 255));
         JL_Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
 
-        JB_Foto.setText("Foto");
+        JB_Foto.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/camera.png")); // NOI18N
         JB_Foto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_FotoActionPerformed(evt);
@@ -274,7 +274,7 @@ public class Captura extends javax.swing.JInternalFrame {
                         .addComponent(JL_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JP_Panel2Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(JB_Foto)))
+                        .addComponent(JB_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         JP_Panel2Layout.setVerticalGroup(
@@ -339,10 +339,10 @@ public class Captura extends javax.swing.JInternalFrame {
         JP_Panel3Layout.setVerticalGroup(
             JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JP_Panel3Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JB_Buscar)
-                    .addComponent(JB_Agregar))
+                .addGap(23, 23, 23)
+                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JB_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_Modificar)
@@ -390,9 +390,9 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addGap(161, 161, 161))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(11, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(12, Short.MAX_VALUE)))
+                    .addContainerGap(16, Short.MAX_VALUE)))
         );
 
         pack();
@@ -433,6 +433,8 @@ public class Captura extends javax.swing.JInternalFrame {
     
     private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
         // TODO add your handling code here:
+
+//
         String campo = "Campos:";
         String nombre = JT_Nombre.getText().toUpperCase();
         String apellido = JT_Apellido.getText().toUpperCase();
@@ -502,12 +504,17 @@ public class Captura extends javax.swing.JInternalFrame {
             // Saber que retorna si presiona
             // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
             System.out.println(nomabusPa);
-
-            if(0 != nomabusPa){
+            if(0 == nomabusPa){
+                // Metodos error
+                //Metodos enlace = new Metodos();
+                // enlace.Agregar(nombre, apellido, domicilio, telefono, email, email, sexo, edad, fis, longitud);
+                JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
+                System.exit(0);
+            } else {
                 System.out.println("Nos cancela");
                 System.exit(0);
                 System.out.println("ADIÓS");
-            } 
+            }
         } else {
             // Split y luego pop
             JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
