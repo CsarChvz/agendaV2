@@ -28,10 +28,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
                       <Component id="JP_Panel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                       <Component id="JP_Panel1" min="-2" pref="325" max="-2" attributes="0"/>
                   </Group>
               </Group>
