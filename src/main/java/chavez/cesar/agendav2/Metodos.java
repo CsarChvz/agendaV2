@@ -117,22 +117,17 @@ public String[] Buscar(String nomabus){
         Connection conexion = obtenerConexion();
         
         try {
-            // Actualizar
-            String query = "update Personas set nombre = ?, apellido = ?, domicilio = ?, telefono = ?, email = ?, fechanacimiento = ?, sexo = ?, edad = ?, foto = ?  where Id=?";
+            String query = "UPDATE Personas set nombre=? where id=?";
             try(PreparedStatement instruccion = conexion.prepareStatement(query)) {
                 
                 // Colocamos los datos
-                // Ingresamos el id para actualizar las cosasinstruccion.setString(1, Nombre);
-                instruccion.setString(2, Apellido);
-                instruccion.setString(3, Domicilio);
-                instruccion.setString(4, Telefono);
-                instruccion.setString(5, Email);
-                instruccion.setString(6, FechaNac);
-                instruccion.setString(7, Sexo);
-                instruccion.setInt(8, Edad);
-                instruccion.setBinaryStream(9, fis, Longitud);
-                instruccion.setInt(10, ID);
-                instruccion.executeUpdate();
+                // Ingresamos el id para actualizar las cosas
+                instruccion.setString(1, Nombre);
+                instruccion.setInt(2, ID);
+                int n = instruccion.executeUpdate();
+                if(n>0){
+                    JOptionPane.showMessageDialog(null, "Datos actualizados");
+                }
             } catch (Exception e) {
                 System.out.println(e);
             }
