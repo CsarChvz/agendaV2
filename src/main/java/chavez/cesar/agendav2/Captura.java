@@ -55,6 +55,7 @@ public class Captura extends javax.swing.JInternalFrame {
         });
         
         JB_Modificar.setVisible(false);
+        JB_Eliminar.setVisible(false);
         JT_ID.setVisible(false);
         
         
@@ -588,6 +589,7 @@ public class Captura extends javax.swing.JInternalFrame {
                 } finally {
                     // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
                     JB_Modificar.setVisible(true);
+                    JB_Eliminar.setVisible(true);
                 }
 
                 JT_Edad.setText(resultado[8]);
