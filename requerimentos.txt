@@ -23,3 +23,5 @@ else {
                 JOptionPane.showMessageDialog(rootPane, "OPeracion con exito");
                 System.exit(0);
             }
+
+https://stackoverflow.com/questions/11890774/how-to-use-a-filter-for-textfields-in-java-swing
