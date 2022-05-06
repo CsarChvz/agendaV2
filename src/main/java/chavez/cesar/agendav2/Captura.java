@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -52,6 +53,11 @@ public class Captura extends javax.swing.JInternalFrame {
                 }
             }
         });
+        
+        JB_Modificar.setVisible(false);
+        JT_ID.setVisible(false);
+        
+        
     }
 
     FileInputStream fis;
@@ -64,6 +70,7 @@ public class Captura extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         JFCFoto = new javax.swing.JFileChooser();
+        jLabel1 = new javax.swing.JLabel();
         JP_Panel1 = new javax.swing.JPanel();
         JL_Nombre = new javax.swing.JLabel();
         JL_Apellido = new javax.swing.JLabel();
@@ -86,6 +93,7 @@ public class Captura extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         JT_Nombre = new javax.swing.JTextField();
+        JT_ID = new javax.swing.JTextField();
         JP_Panel2 = new javax.swing.JPanel();
         JL_Foto = new javax.swing.JLabel();
         JB_Foto = new javax.swing.JButton();
@@ -95,7 +103,8 @@ public class Captura extends javax.swing.JInternalFrame {
         JB_Buscar = new javax.swing.JButton();
         JB_Eliminar = new javax.swing.JButton();
         JB_Salir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/ea5a008793e97aa71480d098848b6513.jpg")); // NOI18N
 
         JP_Panel1.setBackground(new java.awt.Color(255, 51, 51));
         JP_Panel1.setOpaque(false);
@@ -143,6 +152,12 @@ public class Captura extends javax.swing.JInternalFrame {
         JT_Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 JT_NombreFocusGained(evt);
+            }
+        });
+
+        JT_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JT_IDActionPerformed(evt);
             }
         });
 
@@ -195,7 +210,9 @@ public class Captura extends javax.swing.JInternalFrame {
                                             .addComponent(JL_Nombre)
                                             .addComponent(JL_ID))
                                         .addGap(18, 18, 18)
-                                        .addComponent(JT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(JT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(JT_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(JL_ID2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -208,7 +225,9 @@ public class Captura extends javax.swing.JInternalFrame {
             JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JP_Panel1Layout.createSequentialGroup()
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JL_ID)
+                    .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JL_ID)
+                        .addComponent(JT_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JP_Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(JL_ID2)))
@@ -248,7 +267,7 @@ public class Captura extends javax.swing.JInternalFrame {
                         .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JL_Edad))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         JP_Panel2.setOpaque(false);
@@ -297,6 +316,11 @@ public class Captura extends javax.swing.JInternalFrame {
         });
 
         JB_Modificar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/edit.png")); // NOI18N
+        JB_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_ModificarActionPerformed(evt);
+            }
+        });
 
         JB_Buscar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/search.png")); // NOI18N
         JB_Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -342,7 +366,7 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JB_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(JB_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_Modificar)
@@ -351,8 +375,6 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addComponent(JB_Salir)
                 .addContainerGap())
         );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/ea5a008793e97aa71480d098848b6513.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -369,29 +391,19 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(11, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addContainerGap(11, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(JP_Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(45, 45, 45)
                 .addComponent(JP_Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(161, 161, 161))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -573,6 +585,9 @@ public class Captura extends javax.swing.JInternalFrame {
                     JD_DateChooser.setDate(fechanac);
                 } catch (ParseException pex) {
                     Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
+                } finally {
+                    // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
+                    JB_Modificar.setVisible(true);
                 }
 
                 JT_Edad.setText(resultado[8]);
@@ -614,6 +629,17 @@ public class Captura extends javax.swing.JInternalFrame {
     private void JB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JB_EliminarActionPerformed
+
+    private void JB_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ModificarActionPerformed
+        // TODO add your handling code here:
+        Metodos enlace = new Metodos();
+    }//GEN-LAST:event_JB_ModificarActionPerformed
+
+    private void JT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_IDActionPerformed
+        // TODO add your handling code here:
+        if(!JT_ID.getText().isEmpty()){
+        }
+    }//GEN-LAST:event_JT_IDActionPerformed
 
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
@@ -657,6 +683,7 @@ public class Captura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JT_Domicilio;
     private javax.swing.JTextField JT_Edad;
     private javax.swing.JTextField JT_Email;
+    private javax.swing.JTextField JT_ID;
     private javax.swing.JTextField JT_Nombre;
     private javax.swing.JTextField JT_Telefono;
     private javax.swing.JLabel jLabel1;

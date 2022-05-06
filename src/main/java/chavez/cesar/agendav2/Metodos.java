@@ -112,10 +112,39 @@ public String[] Buscar(String nomabus){
         
     }
     
-    public void Modificar(int ID){
+    public void Modificar(String Nombre, String Apellido, String Domicilio, String Telefono, String Email, String FechaNac, String Sexo, int Edad, FileInputStream fis, int Longitud, int ID) throws SQLException{
         // Obtenemos la conexion de la base de datos
         Connection conexion = obtenerConexion();
         
+        try {
+            // Actualizar
+            String query = "update Personas set nombre = ?, apellido = ?, domicilio = ?, telefono = ?, email = ?, fechanacimiento = ?, sexo = ?, edad = ?, foto = ?  where Id=?";
+            try(PreparedStatement instruccion = conexion.prepareStatement(query)) {
+                
+                // Colocamos los datos
+                // Ingresamos el id para actualizar las cosasinstruccion.setString(1, Nombre);
+                instruccion.setString(2, Apellido);
+                instruccion.setString(3, Domicilio);
+                instruccion.setString(4, Telefono);
+                instruccion.setString(5, Email);
+                instruccion.setString(6, FechaNac);
+                instruccion.setString(7, Sexo);
+                instruccion.setInt(8, Edad);
+                instruccion.setBinaryStream(9, fis, Longitud);
+                instruccion.setInt(10, ID);
+                instruccion.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally{
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                login.log(Level.SEVERE, null, ex);
+            }
+        }
         
     }
     public byte[] obtenerFoto(int ID) {
