@@ -371,9 +371,9 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addGap(36, 36, 36))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(11, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,9 +389,9 @@ public class Captura extends javax.swing.JInternalFrame {
                 .addGap(161, 161, 161))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(11, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(16, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -505,9 +505,15 @@ public class Captura extends javax.swing.JInternalFrame {
             System.out.println(nomabusPa);
             if(0 == nomabusPa){
                 // Metodos error
-                //Metodos enlace = new Metodos();
-                // enlace.Agregar(nombre, apellido, domicilio, telefono, email, email, sexo, edad, fis, longitud);
-                JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
+                try {
+                    Metodos enlace = new Metodos();
+                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, email, sexo, edad, fis, longitud);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: "+e);
+                } finally {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
+                }
+
                 System.exit(0);
             } else {
                 System.out.println("Nos cancela");

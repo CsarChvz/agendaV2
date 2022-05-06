@@ -87,18 +87,18 @@ public String[] Buscar(String nomabus){
                     + "nombre, apellido, domicilio, telefono, email, fechanacimiento, sexo, edad, foto)"
                     + "values(?,?,?,?,?,?,?,?,?)";
             
-            PreparedStatement instruccion = conexion.prepareStatement(query);
-            instruccion.setString(1, Nombre);
-            instruccion.setString(2, Apellido);
-            instruccion.setString(3, Domicilio);
-            instruccion.setString(4, Telefono);
-            instruccion.setString(5, Email);
-            instruccion.setString(6, FechaNac);
-            instruccion.setString(7, Sexo);
-            instruccion.setInt(8, Edad);
-            instruccion.setBinaryStream(9,fis, Longitud);
-            instruccion.executeUpdate();
-            instruccion.close();
+            try (PreparedStatement instruccion = conexion.prepareStatement(query)) {
+                instruccion.setString(1, Nombre);
+                instruccion.setString(2, Apellido);
+                instruccion.setString(3, Domicilio);
+                instruccion.setString(4, Telefono);
+                instruccion.setString(5, Email);
+                instruccion.setString(6, FechaNac);
+                instruccion.setString(7, Sexo);
+                instruccion.setInt(8, Edad);
+                instruccion.setBinaryStream(9,fis, Longitud);
+                instruccion.executeUpdate();
+            }
         } catch (SQLException e) {
             Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, e);
         } finally {
@@ -112,6 +112,12 @@ public String[] Buscar(String nomabus){
         
     }
     
+    public void Modificar(int ID){
+        // Obtenemos la conexion de la base de datos
+        Connection conexion = obtenerConexion();
+        
+        
+    }
     public byte[] obtenerFoto(int ID) {
 
         byte[] resultado = new byte[127];
