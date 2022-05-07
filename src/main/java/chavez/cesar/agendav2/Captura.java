@@ -521,7 +521,7 @@ public class Captura extends javax.swing.JInternalFrame {
                 // Metodos error
                 try {
                     Metodos enlace = new Metodos();
-                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, email, sexo, edad, fis, longitud);
+                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(rootPane, "Operacion con error: "+e);
                 } finally {
