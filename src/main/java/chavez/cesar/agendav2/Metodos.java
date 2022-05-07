@@ -150,6 +150,11 @@ public String[] Buscar(String nomabus){
         }
         
     }
+    
+    public void Eliminar(int ID){
+        Connection conexion = obtenerConexion();
+        System.out.println(ID);
+    }
     public byte[] obtenerFoto(int ID) {
 
         byte[] resultado = new byte[127];

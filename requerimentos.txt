@@ -1,4 +1,10 @@
 1. Implementar los botones (Agregar, Buscar, Modificar, Eliminar, Limpiar). -- Falta agregar los 3 ultimos metodos
+
+Agregar ---->>>> Terminado 
+Buscar ---->>>>> Terminado 
+Modificar ---->>> Terminado
+Eliminar ---->>> En proceso
+Limpiar ----->>> Para hacer
 2. Cada vez que se agregue, modifique y se elimine un Registro, que nos pregunte si estamos seguros de realizar dicha acción y que muestre un mensaje que ya realizó satisfactoriamente la acción y que limpie los todos campos. 
 -- Esto se puede copiar el codigo de agregar para lo de las alertas
 3. Verificar que sólo se puedan escribir letras en los campos que así lo requieran (Nombre y Apellido).

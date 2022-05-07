@@ -631,6 +631,18 @@ public class Captura extends javax.swing.JInternalFrame {
 
     private void JB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EliminarActionPerformed
         // TODO add your handling code here:
+        Metodos enlace = new Metodos();
+        int ID = Integer.parseInt(JL_ID2.getText());
+        int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere eliminar?");
+        if (nomabusPa == 0) {
+            try {
+                enlace.Eliminar(ID);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + ID);
+
+            }
+        }
+
     }//GEN-LAST:event_JB_EliminarActionPerformed
 
     private void JB_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ModificarActionPerformed
