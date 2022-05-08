@@ -154,7 +154,29 @@ public String[] Buscar(String nomabus){
     public void Eliminar(int ID){
         Connection conexion = obtenerConexion();
         System.out.println(ID);
+        try {
+            String query = "delete from Personas where Id=?";
+            try(PreparedStatement instruccion = conexion.prepareStatement(query)) {
+                instruccion.setInt(1, ID);
+                int n = instruccion.executeUpdate();
+                if (n > 0) {
+                    JOptionPane.showMessageDialog(null, "Usuario eliminado");
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally{
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                login.log(Level.SEVERE, null, ex);
+            }
+        }
     }
+    
+
     public byte[] obtenerFoto(int ID) {
 
         byte[] resultado = new byte[127];
