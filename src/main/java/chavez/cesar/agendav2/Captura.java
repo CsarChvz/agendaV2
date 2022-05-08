@@ -12,6 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,12 +33,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 // Regex
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import java.util.Date;
 /**
  *
  * @author depresionatom
@@ -473,6 +474,11 @@ public final class Captura extends javax.swing.JInternalFrame {
                 "Id", "nombre", "apellido", "domicilio", "telefono", "email", "fechanacimiento", "sexo", "edad", "foto"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout TablaLayout = new javax.swing.GroupLayout(Tabla);
@@ -1055,6 +1061,57 @@ public final class Captura extends javax.swing.JInternalFrame {
             jLabel6.setText("No hay una edad");
         }
     }//GEN-LAST:event_JT_EdadFocusLost
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int fila = jTable1.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "No se selecciono la fila");
+        } else {
+            
+            // Obtenemos los valores de la fila
+            idc = Integer.parseInt((String) jTable1.getValueAt(fila, 0).toString());
+            String id = (String) jTable1.getValueAt(fila, 0).toString();
+            String Nombre = (String) jTable1.getValueAt(fila, 1);
+            String apellido = (String) jTable1.getValueAt(fila, 2);
+            String domicilio = (String) jTable1.getValueAt(fila, 3);
+            String telefono = (String) jTable1.getValueAt(fila, 4);
+            String email = (String) jTable1.getValueAt(fila, 5);
+            //Fecha
+            String fechaNacimiento = (String) jTable1.getValueAt(fila, 6);
+            String date = fechaNacimiento;
+            try {
+                java.util.Date date2 = new SimpleDateFormat("dd/MMM/yyyy").parse(date);
+                JD_DateChooser.setDate(date2);
+            } catch (ParseException ex) {
+                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            // -- Fin de fecha
+            String sexo = (String) jTable1.getValueAt(fila, 7);
+            String edad = (String) jTable1.getValueAt(fila, 8).toString();
+            Blob foto = (Blob) jTable1.getValueAt(fila, 9);
+            JL_ID2.setText(id);
+            JT_Nombre.setText(Nombre);
+            JT_Apellido.setText(apellido);
+            JT_Domicilio.setText(domicilio);
+            JT_Telefono.setText(telefono);
+            JT_Email.setText(email);
+            JT_Edad.setText(edad);
+            //JD_DateChooser.setDate(d1);
+            if("Masculino".equals(sexo)){
+                JR_Femenino.setSelected(false);
+                JR_Masculino.setSelected(true);
+            } else {
+                JR_Femenino.setSelected(true);
+                JR_Masculino.setSelected(false);
+
+            }
+            // Fotografia
+            mostrarFoto(idc);
+            System.out.println(foto);
+        }  
+    }//GEN-LAST:event_jTable1MouseClicked
 
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
