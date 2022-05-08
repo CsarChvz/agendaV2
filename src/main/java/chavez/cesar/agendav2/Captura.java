@@ -845,6 +845,7 @@ public final class Captura extends javax.swing.JInternalFrame {
 
         // ID de la persona buscada a modificar
         int ID = Integer.parseInt(JL_ID2.getText());
+        System.out.println(ID);
         String nombre = JT_Nombre.getText().toUpperCase();
         String apellido = JT_Apellido.getText().toUpperCase();
         String domicilio = JT_Domicilio.getText().toUpperCase();
@@ -955,7 +956,16 @@ public final class Captura extends javax.swing.JInternalFrame {
         limpiar();
         JB_Agregar.setEnabled(true);
     }//GEN-LAST:event_JB_LimpiarActionPerformed
-
+    
+    void mostrarBotones(){
+        JB_Modificar.setVisible(true);
+        JB_Eliminar.setVisible(true);
+    }
+    
+    void ocultarBotones(){
+        JB_Modificar.setVisible(false);
+        JB_Eliminar.setVisible(false);
+    }
     private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
         // TODO add your handling code here:
         Pattern pattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
@@ -1111,6 +1121,7 @@ public final class Captura extends javax.swing.JInternalFrame {
             // Fotografia
             mostrarFoto(idc);
             JB_Agregar.setEnabled(false);
+            mostrarBotones();
             System.out.println(foto);
         }  
     }//GEN-LAST:event_jTable1MouseClicked
