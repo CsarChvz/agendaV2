@@ -4,6 +4,10 @@
  */
 package chavez.cesar.agendav2;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author depresionatom
@@ -95,16 +99,20 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_CapturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_CapturaActionPerformed
-        // TODO add your handling code here:
-        
-        // Instanciamos el objeto
-        Captura ventana = new Captura();
-        // Agregamos el objeto a la ventana principal
-        JDP_Principal.add(ventana);
-        // Manda hacia delante al objeto o a la ventana que instaseamos
-        ventana.toFront();
-        // Mostramos la pantalla
-        ventana.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            
+            // Instanciamos el objeto
+            Captura ventana = new Captura();
+            // Agregamos el objeto a la ventana principal
+            JDP_Principal.add(ventana);
+            // Manda hacia delante al objeto o a la ventana que instaseamos
+            ventana.toFront();
+            // Mostramos la pantalla
+            ventana.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_JMI_CapturaActionPerformed
 
     private void JMI_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SalirActionPerformed

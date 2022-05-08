@@ -209,6 +209,20 @@ public String[] Buscar(String nomabus){
         return resultado;
     }
     
+    
+    public ResultSet UpdateTable(){
+        Connection conexion = obtenerConexion();
+        try {
+            String query = "select * from Personas";
+            PreparedStatement instruccion = conexion.prepareStatement(query);
+            ResultSet rs = instruccion.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     // Funcion para checar la validacion a la hora de agregar en el boton
     public void checkValidation(){
         
