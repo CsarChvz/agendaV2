@@ -953,6 +953,7 @@ public final class Captura extends javax.swing.JInternalFrame {
     private void JB_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LimpiarActionPerformed
         // TODO add your handling code here:
         limpiar();
+        JB_Agregar.setEnabled(true);
     }//GEN-LAST:event_JB_LimpiarActionPerformed
 
     private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
@@ -1109,6 +1110,7 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
             // Fotografia
             mostrarFoto(idc);
+            JB_Agregar.setEnabled(false);
             System.out.println(foto);
         }  
     }//GEN-LAST:event_jTable1MouseClicked
