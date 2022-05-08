@@ -832,11 +832,15 @@ public class Captura extends javax.swing.JInternalFrame {
                 // En esta parte podemos poner un icono con una palomita
                 jLabel5.setText("Match found");
                 JB_Agregar.setEnabled(true);
+                JB_Modificar.setEnabled(true);
                 jLabel5.updateUI();
             } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
                 jLabel5.setText("Match no found");
                 jLabel5.updateUI();
                 JB_Agregar.setEnabled(false);
+                JB_Modificar.setEnabled(false);
+
             }
         }
     }//GEN-LAST:event_JT_EmailFocusLost
