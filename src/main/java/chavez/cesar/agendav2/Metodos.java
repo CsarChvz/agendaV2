@@ -117,7 +117,7 @@ public String[] Buscar(String nomabus){
         Connection conexion = obtenerConexion();
         
         try {
-            String query = "UPDATE Personas set nombre=?, apellido=?, domicilio=?, telefono=?, email = ?, fechanacimiento=?, sexo=?, edad=?, foto=? where id=?";
+            String query = "UPDATE Personas set nombre=?, apellido=?, domicilio=?, telefono=?, email=?, fechanacimiento=?, sexo=?, edad=? where id=?";
             try(PreparedStatement instruccion = conexion.prepareStatement(query)) {
                 
                 // Colocamos los datos
@@ -130,8 +130,11 @@ public String[] Buscar(String nomabus){
                 instruccion.setString(6, FechaNac);
                 instruccion.setString(7, Sexo);
                 instruccion.setInt(8, Edad);
-                instruccion.setBinaryStream(9, fis, Longitud);
-                instruccion.setInt(10, ID);
+                // El problema es la foto
+                // instruccion.setBinaryStream(9, fis, Longitud);
+                // Aqui va 10
+                System.out.println(fis);
+                instruccion.setInt(9, ID);
                 int n = instruccion.executeUpdate();
                 if(n>0){
                     JOptionPane.showMessageDialog(null, "Datos actualizados");

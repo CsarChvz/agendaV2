@@ -1,0 +1,10 @@
+                instruccion.setString(3, Domicilio);
+                instruccion.setString(4, Telefono);
+                instruccion.setString(5, Email);
+                instruccion.setString(6, FechaNac);
+                instruccion.setString(7, Sexo);
+                instruccion.setInt(8, Edad);
+                instruccion.setBinaryStream(9, fis, Longitud);
+                instruccion.setInt(10, ID);
+
+                , domicilio=?, telefono=?, email = ?, fechanacimiento=?, sexo=?, edad=?, foto=?
