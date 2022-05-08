@@ -3,22 +3,34 @@
 Agregar ---->>>> Terminado 
 Buscar ---->>>>> Terminado 
 Modificar ---->>> Terminado
-Eliminar ---->>> En proceso
-Limpiar ----->>> Para hacer
+Eliminar ---->>> Terminado 
+Limpiar ----->>> Terminado
 2. Cada vez que se agregue, modifique y se elimine un Registro, que nos pregunte si estamos seguros de realizar dicha acción y que muestre un mensaje que ya realizó satisfactoriamente la acción y que limpie los todos campos. 
 -- Esto se puede copiar el codigo de agregar para lo de las alertas
+2 ----->>>> Terminado
+
+---------- Verificaciones interesantes -----------
+
 3. Verificar que sólo se puedan escribir letras en los campos que así lo requieran (Nombre y Apellido).
 -- Esto hacerlo en la parte del input
 4. Verificar que sólo se puedan escribir números en los campos que así lo requieran (Teléfono y Edad).
 -- Hacerlo en la parte del input action
+
+
 5. Verificar que ningún campo este vacío antes de agregar y/o modificar.   ----->>>> Terminado
 6. Verificar el campo de email. -- Hacerlo con regex en la parte del input
+
+--------- Final de Verificaciones ---------------
+
+-------- Diseño de la aplicacion ----------------
+
 7. Implementar iconos en lugar de los botones.                             ---->>>> Terminado
 8. Insertar una imagen de fondo en las dos ventanas (Principal y Captura). ---->>>> Terminado
 9. Agregar una tabla en la parte de abajo de la ventana (Captura) que muestre todos los Registros (Personas) agregados en la base de datos y que se vaya actualizando cada vez que se haga un cambio en la misma.
 10. En caso de buscar a una persona y haya dos o más Registros (Personas) con el mismo Nombre, mostrar en la tabla de la parte inferior los Registros repetidos, para poder seleccionar una u otra haciendo doble click sobre cualquiera de esos Registros, extraer los datos (información) a los campos (cajas de texto) para poder modificar la información.
 11. Hacer las ventanas responsivas.
 
+------- Final de diseño de la aplicacion ----------
 --- Saving
 
 else {

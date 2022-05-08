@@ -123,6 +123,11 @@ public class Captura extends javax.swing.JInternalFrame {
 
         JL_Email.setText("Email");
 
+        JT_Email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                JT_EmailFocusLost(evt);
+            }
+        });
         JT_Email.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
@@ -675,8 +680,9 @@ public class Captura extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if(!JT_Email.getText().isEmpty()){
             // Poner que coincida con el regex, si no coincide, entoncs modificaremos el label segun correspondiente 
+            System.out.println("aa");
+
        } else {
-            
         }
     }//GEN-LAST:event_JT_EmailInputMethodTextChanged
 
@@ -817,6 +823,20 @@ public class Captura extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         limpiar();
     }//GEN-LAST:event_JB_LimpiarActionPerformed
+
+    private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+        if(!JT_Email.getText().isEmpty()){
+            Matcher matcher = pattern.matcher(JT_Email.getText());
+            boolean matchFound = matcher.find();
+            if (matchFound) {
+                jLabel5.setText("Match found");
+            } else {
+                System.out.println("Match not found");
+            }
+        }
+    }//GEN-LAST:event_JT_EmailFocusLost
 
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
