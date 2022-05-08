@@ -444,7 +444,28 @@ public class Captura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void limpiar(){
-        JT_Nombre.setText("");
+        try {
+            JL_ID2.setText("");
+            JT_Nombre.setText("");
+            JT_Apellido.setText("");
+            JT_Domicilio.setText("");
+            JT_Edad.setText("");
+            JT_Email.setText("");
+            JR_Masculino.setSelected(false);
+            JR_Femenino.setSelected(false);
+            JL_Foto.setIcon(null);
+            JD_DateChooser.setDate(null);
+            JT_Telefono.setText("");
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally{
+            if (JB_Modificar.isVisible() && JB_Eliminar.isVisible()) {
+                JB_Modificar.setVisible(false);
+                JB_Eliminar.setVisible(false);
+            }
+        }
+        // Cambiar lo del sexo y agregar grupo
+        // Desactivar los botones
     }
     private void JT_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EdadActionPerformed
         // TODO add your handling code here:
