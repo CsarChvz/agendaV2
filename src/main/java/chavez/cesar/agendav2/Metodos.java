@@ -209,4 +209,8 @@ public String[] Buscar(String nomabus){
         return resultado;
     }
     
+    // Funcion para checar la validacion a la hora de agregar en el boton
+    public void checkValidation(){
+        
+    }
 }   

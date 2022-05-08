@@ -12,13 +12,13 @@ Limpiar ----->>> Terminado
 ---------- Verificaciones interesantes -----------
 
 3. Verificar que sólo se puedan escribir letras en los campos que así lo requieran (Nombre y Apellido).
--- Esto hacerlo en la parte del input
+-- Esto hacerlo en la parte del input     ---------->> Terminado
 4. Verificar que sólo se puedan escribir números en los campos que así lo requieran (Teléfono y Edad).
--- Hacerlo en la parte del input action
+-- Hacerlo en la parte del input actio    ---------->>> Terminado
 
 
 5. Verificar que ningún campo este vacío antes de agregar y/o modificar.   ----->>>> Terminado
-6. Verificar el campo de email. -- Hacerlo con regex en la parte del input
+6. Verificar el campo de email. -- Hacerlo con regex en la parte del input ----->>>> Terminado 
 
 --------- Final de Verificaciones ---------------
 
