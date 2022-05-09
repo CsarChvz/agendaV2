@@ -50,7 +50,6 @@ public String[] Buscar(String nomabus){
                 instruccion.setString(1, nomabus);
                 try{
                     ResultSet rs = instruccion.executeQuery();
-                    
                     while(rs.next()){
                         resultado[0]=rs.getString("id");
                         resultado[1]=rs.getString("Nombre");
