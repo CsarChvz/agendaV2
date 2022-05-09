@@ -77,6 +77,8 @@ public String[] Buscar(String nomabus){
             }
         }
         return resultado;
+        
+
     }
     
     public void Agregar(String Nombre, String Apellido, String Domicilio, String Telefono, String Email, String FechaNac, String Sexo, int Edad, FileInputStream fis, int Longitud){

@@ -8,3 +8,97 @@
                 instruccion.setInt(10, ID);
 
                 , domicilio=?, telefono=?, email = ?, fechanacimiento=?, sexo=?, edad=?, foto=?
+
+
+                        try{
+            String query = "select * from personas where Nombre=?";
+            PreparedStatement instruccion = conexion.prepareStatement(query);
+            
+                instruccion.setString(1, nomabus);
+                try{
+                    ResultSet rs = instruccion.executeQuery();
+                    while(rs.next()){
+                        resultado[0]=rs.getString("id");
+                        resultado[1]=rs.getString("Nombre");
+                        resultado[2]=rs.getString("Apellido");
+                        resultado[3]=rs.getString("Domicilio");
+                        resultado[4]=rs.getString("Telefono");
+                        resultado[5]=rs.getString("Email");
+                        resultado[6]=rs.getString("FechaNacimiento");
+                        resultado[7]=rs.getString("Sexo");
+                        resultado[8]=rs.getString("Edad");
+                    }
+                    rs.close();
+                }catch(SQLException ex){
+                    JOptionPane.showMessageDialog(null, "Exception: " + ex);
+                }
+                
+        }catch(SQLException ex){
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);   
+            
+        }finally{
+            try{
+                conexion.close();
+            }catch(SQLException ex){
+                login.log(Level.SEVERE, null, ex);
+            }
+        }
+        return resultado;
+
+
+    private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        Metodos enlace = new Metodos();
+        nomabus = JOptionPane.showInternalInputDialog(rootPane, "Nombre a Buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+        if (nomabus != null) {
+            String[] resultado = null;
+            try {
+                resultado = enlace.Buscar(nomabus);
+            } catch (SQLException ex) {
+                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                busquedaConsultar(nomabus);
+            } catch (SQLException ex) {
+                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (resultado[0] == null) {
+                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + nomabus.toUpperCase());
+            } else {
+                JL_ID2.setText(resultado[0]);
+                JT_Nombre.setText(resultado[1]);
+                JT_Apellido.setText(resultado[2]);
+                JT_Domicilio.setText(resultado[3]);
+                JT_Telefono.setText(resultado[4]);
+                JT_Email.setText(resultado[5]);
+
+                try {
+                    SimpleDateFormat formato = new SimpleDateFormat("dd/MMM/yyyy");
+                    Date fechanac = formato.parse(resultado[6]);
+                    JD_DateChooser.setDate(fechanac);
+                } catch (ParseException pex) {
+                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
+                } finally {
+                    // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
+                    JB_Modificar.setVisible(true);
+                    JB_Eliminar.setVisible(true);
+                }
+
+                JT_Edad.setText(resultado[8]);
+
+                if (resultado[7].equals("Masculino")) {
+                    JR_Masculino.setSelected(true);
+                } else {
+                    JR_Femenino.setSelected(true);
+                }
+            }
+
+            // Error aqui
+            mostrarFoto(Integer.parseInt(JL_ID2.getText()));
+            // mostrarFoto(Integer.parseInt(JL_ID.getText()));
+
+            // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
+            if (!JL_ID2.getText().isEmpty()) {
+                JB_Agregar.setEnabled(false);
+            }
+        }
+    }

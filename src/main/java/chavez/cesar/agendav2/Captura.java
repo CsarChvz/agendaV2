@@ -841,7 +841,9 @@ public final class Captura extends javax.swing.JInternalFrame {
         Metodos enlace = new Metodos();
         nomabus = JOptionPane.showInternalInputDialog(rootPane, "Nombre a Buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
         if (nomabus != null) {
-            String[] resultado = enlace.Buscar(nomabus);
+
+            String[] resultado = null;
+            resultado = enlace.Buscar(nomabus);
             try {
                 busquedaConsultar(nomabus);
             } catch (SQLException ex) {
