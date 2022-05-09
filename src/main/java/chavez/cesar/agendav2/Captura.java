@@ -22,7 +22,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,6 +81,7 @@ public final class Captura extends javax.swing.JInternalFrame {
         jLabel3.setVisible(false);
         jLabel6.setVisible(false);
         jLabel4.setVisible(false);
+        jTable1.setEnabled(false);
         consultar();
 
 
@@ -90,7 +90,8 @@ public final class Captura extends javax.swing.JInternalFrame {
     int longitud;
     Image imgFoto;
     String nomabus;
- 
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -854,6 +855,7 @@ public final class Captura extends javax.swing.JInternalFrame {
             
             if(nVeces>1){
                 try {
+                    jTable1.setEnabled(true);
                     JOptionPane.showMessageDialog(rootPane, "Existen "+nVeces+" usuarios con el nombre igual \n Seleccione el que quiera en la tabla");
                     busquedaConsultar(nomabus);
                     MouseListener mouseListener = new MouseListener() {
@@ -1154,6 +1156,55 @@ public final class Captura extends javax.swing.JInternalFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        int fila = jTable1.getSelectedRow();
+        if (fila == -1) {
+            
+        } else {
+
+            // Obtenemos los valores de la fila
+            idc = Integer.parseInt((String) jTable1.getValueAt(fila, 0).toString());
+            String id = (String) jTable1.getValueAt(fila, 0).toString();
+            String Nombre = (String) jTable1.getValueAt(fila, 1);
+            String apellido = (String) jTable1.getValueAt(fila, 2);
+            String domicilio = (String) jTable1.getValueAt(fila, 3);
+            String telefono = (String) jTable1.getValueAt(fila, 4);
+            String email = (String) jTable1.getValueAt(fila, 5);
+            //Fecha
+            String fechaNacimiento = (String) jTable1.getValueAt(fila, 6);
+            String date = fechaNacimiento;
+            try {
+                java.util.Date date2 = new SimpleDateFormat("dd/MMM/yyyy").parse(date);
+                JD_DateChooser.setDate(date2);
+            } catch (ParseException ex) {
+                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // -- Fin de fecha
+            String sexo = (String) jTable1.getValueAt(fila, 7);
+            String edad = (String) jTable1.getValueAt(fila, 8).toString();
+            //Blob foto = (Blob) jTable1.getValueAt(fila, 9);
+            JL_ID2.setText(id);
+            JT_Nombre.setText(Nombre);
+            JT_Apellido.setText(apellido);
+            JT_Domicilio.setText(domicilio);
+            JT_Telefono.setText(telefono);
+            JT_Email.setText(email);
+            JT_Edad.setText(edad);
+            //JD_DateChooser.setDate(d1);
+            if ("Masculino".equals(sexo)) {
+                JR_Femenino.setSelected(false);
+                JR_Masculino.setSelected(true);
+            } else {
+                JR_Femenino.setSelected(true);
+                JR_Masculino.setSelected(false);
+
+            }
+            // Fotografia
+            mostrarFoto(idc);
+            JB_Agregar.setEnabled(false);
+            mostrarBotones();
+            //System.out.println(foto);
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private Image convertirImagen(byte[] bytes) throws IOException {
