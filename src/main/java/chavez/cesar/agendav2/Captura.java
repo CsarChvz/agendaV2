@@ -5,6 +5,8 @@
 package chavez.cesar.agendav2;
 
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.Statement;
@@ -57,6 +59,8 @@ public final class Captura extends javax.swing.JInternalFrame {
     Statement st;
     ResultSet rs;
     int idc;
+    
+    
     public Captura() throws SQLException {
         initComponents();
         JD_DateChooser.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
@@ -476,7 +480,7 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, false, true, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -852,6 +856,35 @@ public final class Captura extends javax.swing.JInternalFrame {
                 try {
                     JOptionPane.showMessageDialog(rootPane, "Existen "+nVeces+" usuarios con el nombre igual \n Seleccione el que quiera en la tabla");
                     busquedaConsultar(nomabus);
+                    MouseListener mouseListener = new MouseListener() {
+                        @Override
+                        public void mouseClicked(MouseEvent me) {
+                            int fila = jTable1.getSelectedRow();
+                            System.out.println(fila);
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+                    };
+                    MouseListener[] mouseListeners = jTable1.getMouseListeners();
+                    System.out.println(Arrays.toString(mouseListeners)); 
                 } catch (SQLException ex) {
                     Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
                 }
