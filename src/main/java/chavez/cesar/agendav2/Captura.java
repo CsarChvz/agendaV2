@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.util.Date;
+import javax.swing.event.TableModelEvent;
 /**
  *
  * @author depresionatom
@@ -471,9 +472,17 @@ public final class Captura extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "nombre", "apellido", "domicilio", "telefono", "email", "fechanacimiento", "sexo", "edad", "foto"
+                "Id", "Nombre", "Apellido", "Domicilio", "Telefono", "Email", "FechaNacimiento", "Sexo", "Edad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, false, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -507,7 +516,7 @@ public final class Captura extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(43, 43, 43)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
@@ -548,7 +557,7 @@ public final class Captura extends javax.swing.JInternalFrame {
         String query = "select * from personas";
         PreparedStatement instruccion = conexion.prepareStatement(query);
         rs = instruccion.executeQuery();
-        Object[] persona = new Object[10];
+        Object[] persona = new Object[9];
         modelo =(DefaultTableModel) jTable1.getModel();
         while (rs.next()){
             persona[0] = rs.getInt("Id");
@@ -560,10 +569,33 @@ public final class Captura extends javax.swing.JInternalFrame {
             persona[6] = rs.getString("fechanacimiento");
             persona[7] = rs.getString("sexo");
             persona[8] = rs.getInt("edad");
-            persona[9] = rs.getBlob("foto");
             
             modelo.addRow(persona);
         }
+    }
+    
+    
+    public void busquedaConsultar(String nombre) throws SQLException{
+        String query = "select * from Personas where Nombre=?";
+        PreparedStatement instruccion = conexion.prepareStatement(query);
+        instruccion.setString(1, nombre);
+        rs = instruccion.executeQuery();
+        Object[] persona = new Object[9];
+        modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.getDataVector().removeAllElements();
+        while(rs.next()){
+            persona[0] = rs.getInt("Id");
+            persona[1] = rs.getString("nombre");
+            persona[2] = rs.getString("apellido");
+            persona[3] = rs.getString("domicilio");
+            persona[4] = rs.getString("telefono");
+            persona[5] = rs.getString("email");
+            persona[6] = rs.getString("fechanacimiento");
+            persona[7] = rs.getString("sexo");
+            persona[8] = rs.getInt("edad");
+            modelo.addRow(persona);
+        }
+
     }
     public void limpiar(){
         try {
@@ -589,153 +621,8 @@ public final class Captura extends javax.swing.JInternalFrame {
         // Cambiar lo del sexo y agregar grupo
         // Desactivar los botones
     }
-    
-    private void JT_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EdadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JT_EdadActionPerformed
-
-    private void JB_FotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_FotoActionPerformed
-        // TODO add your handling code here:
         
-        // Hacemos la variable sea una instancia de la clase FileChooser
-        JFCFoto = new JFileChooser();
-        JFCFoto.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG", "jpg");
-        JFCFoto.setFileFilter(filtro);
-        int estado = JFCFoto.showOpenDialog(null);
-        if(estado == JFileChooser.APPROVE_OPTION){
-            
-            try {
-                fis = new FileInputStream(JFCFoto.getSelectedFile());
-                longitud = (int)JFCFoto.getSelectedFile().length();
-                
-                try {   
-                    Image icono = ImageIO.read(JFCFoto.getSelectedFile()).getScaledInstance(JL_Foto.getWidth(), JL_Foto.getHeight(), Image.SCALE_DEFAULT);
-                    JL_Foto.setIcon(new ImageIcon(icono));
-                    JL_Foto.updateUI();
-                } catch (IOException ioe) {
-                    JOptionPane.showMessageDialog(rootPane, "Imagen"+ioe);
-                }
-            } catch(FileNotFoundException fnfe) {
-                JOptionPane.showMessageDialog(rootPane, "Imagen"+fnfe);
-            }
-        }
-    }//GEN-LAST:event_JB_FotoActionPerformed
     
-    
-    private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
-        // TODO add your handling code here:
-
-//
-        String campo = "Campos:";
-        String nombre = JT_Nombre.getText().toUpperCase();
-        String apellido = JT_Apellido.getText().toUpperCase();
-        String domicilio = JT_Domicilio.getText().toUpperCase();
-        String telefono = JT_Telefono.getText().toUpperCase();
-        String email = JT_Email.getText().toUpperCase();
-        int edad = Integer.parseInt(JT_Edad.getText());
-        String edadCampo = JT_Edad.getText();
-        Date fecha = JD_DateChooser.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
-        String fechaNacimiento = sdf.format(fecha);
-        String sexo;
-
-        if(JR_Masculino.isSelected()){
-            sexo = "Masculino";
-        } else {
-            
-            sexo = "Femenino";
-        }   
-        
-        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi 
-        // {nombre: valorNombre,
-        //  apellido: apellido,
-        //  etc,
-        //          }
-        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
-        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
-        // Nombre
-        if(nombre.isEmpty()){
-            System.out.println("Nombre vacio");
-            campo = campo.concat("+Nombre");
-        }
-        // Apellido
-        if (apellido.isEmpty()) {
-            System.out.println("Apellido vacio");
-            campo = campo.concat("+Apellido");
-        }
-        // Domicilio
-        if (domicilio.isEmpty()) {
-            System.out.println("Domicilio vacio");
-            campo = campo.concat("+Domicilio");
-        }
-        // Telefono
-        if (telefono.isEmpty()) {
-            System.out.println("Telefono vacio");
-            campo = campo.concat("+Telefono");
-        }
-        // Email
-        if (email.isEmpty()) {
-            System.out.println("Email vacio");
-            campo = campo.concat("+Email");
-        }
-        // Faltaria la fecha la cual se puede sacar con la edad
-        // Edad
-        if(edadCampo.isEmpty()){
-            System.out.println("Edad vacio");
-            campo = campo.concat("+Edad");
-        }
-
-        if("Campos:".equals(campo)){
-            System.out.println(campo);
-            // Si no hay ningun campo vacio
-           // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
-           //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
-            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
-            
-            // Luego podemos mandar a llamar las validaciones, si este estan bien, entonces podemos ya psaar al pregunta
-            // de que si queremos agregar
-            // Por el momento asi esta bien, luego hacemos una funcion para checar si las validaciones de los campos estan bien
-            
-            //@todo
-            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere agregar?");
-            // Saber que retorna si presiona
-            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
-            System.out.println(nomabusPa);
-            if(0 == nomabusPa){
-                // Metodos error
-                try {
-                    Metodos enlace = new Metodos();
-                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: "+e);
-                } finally {
-                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
-                }
-
-                System.exit(0);
-            } else {
-                System.out.println("Nos cancela");
-                System.exit(0);
-                System.out.println("ADIÓS");
-            }
-        } else {
-            // Split y luego pop
-            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
-        } 
-           
-        
-        // Comprobacion de los input
-        // --Primero se tiene que comprobar que todos tengan algo, entonces
-        // ¿Como podemos comprobar que todods tengan algo?
-       // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
-       // Entonces podemos devolver una alerta que diga que falta
-       // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
-
-       
-
-    }//GEN-LAST:event_JB_AgregarActionPerformed
-
     
     private void mostrarFoto(int ID) {
         Metodos enlace = new Metodos();
@@ -751,13 +638,215 @@ public final class Captura extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Error al abrir la foto. \n" + ex);
             }
         }
+    }    
+    void mostrarBotones(){
+        JB_Modificar.setVisible(true);
+        JB_Eliminar.setVisible(true);
     }
+    
+    void ocultarBotones(){
+        JB_Modificar.setVisible(false);
+        JB_Eliminar.setVisible(false);
+    }
+    private void JB_FotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_FotoActionPerformed
+        // TODO add your handling code here:
+
+        // Hacemos la variable sea una instancia de la clase FileChooser
+        JFCFoto = new JFileChooser();
+        JFCFoto.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG", "jpg");
+        JFCFoto.setFileFilter(filtro);
+        int estado = JFCFoto.showOpenDialog(null);
+        if(estado == JFileChooser.APPROVE_OPTION){
+
+            try {
+                fis = new FileInputStream(JFCFoto.getSelectedFile());
+                longitud = (int)JFCFoto.getSelectedFile().length();
+
+                try {
+                    Image icono = ImageIO.read(JFCFoto.getSelectedFile()).getScaledInstance(JL_Foto.getWidth(), JL_Foto.getHeight(), Image.SCALE_DEFAULT);
+                    JL_Foto.setIcon(new ImageIcon(icono));
+                    JL_Foto.updateUI();
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(rootPane, "Imagen"+ioe);
+                }
+            } catch(FileNotFoundException fnfe) {
+                JOptionPane.showMessageDialog(rootPane, "Imagen"+fnfe);
+            }
+        }
+    }//GEN-LAST:event_JB_FotoActionPerformed
+
+    private void JT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_IDActionPerformed
+        // TODO add your handling code here:
+        if(!JT_ID.getText().isEmpty()){
+        }
+    }//GEN-LAST:event_JT_IDActionPerformed
+
+    private void JT_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusLost
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[0-9]");
+        if (!JT_Nombre.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Nombre.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel2.setVisible(true);
+                jLabel2.setText("No es un nombre");
+                jLabel2.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel2.setVisible(true);
+                jLabel2.setText("Correcto");
+                jLabel2.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_NombreFocusLost
+
+    private void JT_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusGained
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_JT_NombreFocusGained
+
+    private void JT_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JT_EdadActionPerformed
+
+    private void JT_EdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EdadFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[A-Za-z]");
+        if (!JT_Edad.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Edad.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel6.setVisible(true);
+                jLabel6.setText("No es una edad");
+                jLabel6.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel6.setVisible(true);
+                jLabel6.setText("Correcto");
+                jLabel6.updateUI();
+            }
+        } else {
+            jLabel6.setText("No hay una edad");
+        }
+    }//GEN-LAST:event_JT_EdadFocusLost
+
+    private void JT_EmailInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_JT_EmailInputMethodTextChanged
+        // TODO add your handling code here:
+        if(!JT_Email.getText().isEmpty()){
+            // Poner que coincida con el regex, si no coincide, entoncs modificaremos el label segun correspondiente
+            System.out.println("aa");
+
+        } else {
+        }
+    }//GEN-LAST:event_JT_EmailInputMethodTextChanged
+
+    private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+        if(!JT_Email.getText().isEmpty()){
+            Matcher matcher = pattern.matcher(JT_Email.getText());
+            boolean matchFound = matcher.find();
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel5.setVisible(true);
+                jLabel5.setText("Correcto");
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel5.setVisible(true);
+                jLabel5.setText("No es correcto");
+                jLabel5.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_EmailFocusLost
+
+    private void JT_TelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_TelefonoFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[A-Za-z]");
+        if (!JT_Telefono.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Telefono.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel4.setVisible(true);
+                jLabel4.setText("No es un nombre");
+                jLabel4.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel4.setVisible(true);
+                jLabel4.setText("Correcto");
+                jLabel4.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_TelefonoFocusLost
+
+    // Validacion de apellido
+    private void JT_ApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_ApellidoFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[0-9]");
+        // Podemos ver si se tiene numeros, si este es asi entonces mostrar
+        if (!JT_Apellido.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Apellido.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (!matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel3.setVisible(true);
+                jLabel3.setText("Correcto");
+                jLabel3.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel3.setVisible(true);
+                jLabel3.setText("No es un apellido");
+                jLabel3.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_ApellidoFocusLost
+
+    private void JB_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        JB_Agregar.setEnabled(true);
+    }//GEN-LAST:event_JB_LimpiarActionPerformed
+
+    private void JB_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SalirActionPerformed
+        // TODO add your handling code here:
+
+        System.exit(0);
+        System.out.println("ADIÓS");
+    }//GEN-LAST:event_JB_SalirActionPerformed
+
+    private void JB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EliminarActionPerformed
+        // TODO add your handling code here:
+        Metodos enlace = new Metodos();
+        int ID = Integer.parseInt(JL_ID2.getText());
+        int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere eliminar?");
+        if (nomabusPa == 0) {
+            try {
+                enlace.Eliminar(ID);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + ID);
+
+            }
+        }
+    }//GEN-LAST:event_JB_EliminarActionPerformed
+
     private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BuscarActionPerformed
         Metodos enlace = new Metodos();
         nomabus = JOptionPane.showInternalInputDialog(rootPane, "Nombre a Buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
         if (nomabus != null) {
             String[] resultado = enlace.Buscar(nomabus);
-
+            try {
+                busquedaConsultar(nomabus);
+            } catch (SQLException ex) {
+                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+            }
             if (resultado[0] == null) {
                 JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + nomabus.toUpperCase());
             } else {
@@ -792,51 +881,13 @@ public final class Captura extends javax.swing.JInternalFrame {
             // Error aqui
             mostrarFoto(Integer.parseInt(JL_ID2.getText()));
             // mostrarFoto(Integer.parseInt(JL_ID.getText()));
-            
+
             // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
             if (!JL_ID2.getText().isEmpty()) {
                 JB_Agregar.setEnabled(false);
             }
         }
     }//GEN-LAST:event_JB_BuscarActionPerformed
-
-    private void JB_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SalirActionPerformed
-        // TODO add your handling code here:
-        
-        System.exit(0);
-        System.out.println("ADIÓS");
-    }//GEN-LAST:event_JB_SalirActionPerformed
-
-    private void JT_EmailInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_JT_EmailInputMethodTextChanged
-        // TODO add your handling code here:
-        if(!JT_Email.getText().isEmpty()){
-            // Poner que coincida con el regex, si no coincide, entoncs modificaremos el label segun correspondiente 
-            System.out.println("aa");
-
-       } else {
-        }
-    }//GEN-LAST:event_JT_EmailInputMethodTextChanged
-
-    private void JT_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusGained
-        // TODO add your handling code here:    
-        
-    }//GEN-LAST:event_JT_NombreFocusGained
-
-    private void JB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EliminarActionPerformed
-        // TODO add your handling code here:
-        Metodos enlace = new Metodos();
-        int ID = Integer.parseInt(JL_ID2.getText());
-        int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere eliminar?");
-        if (nomabusPa == 0) {
-            try {
-                enlace.Eliminar(ID);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + ID);
-
-            }
-        }
-
-    }//GEN-LAST:event_JB_EliminarActionPerformed
 
     private void JB_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ModificarActionPerformed
         // TODO add your handling code here:
@@ -857,21 +908,20 @@ public final class Captura extends javax.swing.JInternalFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
         String fechaNacimiento = sdf.format(fecha);
         String sexo;
-
         if (JR_Masculino.isSelected()) {
             sexo = "Masculino";
         } else {
 
             sexo = "Femenino";
-        }   
-        
+        }
+
         // ---- Hacer una funcion para validar que si haya algo en el input -----
-        
-        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi 
+
+        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi
         // {nombre: valorNombre,
-        //  apellido: apellido,
-        //  etc,
-        //          }
+            //  apellido: apellido,
+            //  etc,
+            //          }
         // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
         // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
         // Nombre
@@ -945,185 +995,118 @@ public final class Captura extends javax.swing.JInternalFrame {
         // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
     }//GEN-LAST:event_JB_ModificarActionPerformed
 
-    private void JT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_IDActionPerformed
+    private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
         // TODO add your handling code here:
-        if(!JT_ID.getText().isEmpty()){
-        }
-    }//GEN-LAST:event_JT_IDActionPerformed
 
-    private void JB_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LimpiarActionPerformed
-        // TODO add your handling code here:
-        limpiar();
-        JB_Agregar.setEnabled(true);
-    }//GEN-LAST:event_JB_LimpiarActionPerformed
-    
-    void mostrarBotones(){
-        JB_Modificar.setVisible(true);
-        JB_Eliminar.setVisible(true);
-    }
-    
-    void ocultarBotones(){
-        JB_Modificar.setVisible(false);
-        JB_Eliminar.setVisible(false);
-    }
-    private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
-        if(!JT_Email.getText().isEmpty()){
-            Matcher matcher = pattern.matcher(JT_Email.getText());
-            boolean matchFound = matcher.find();
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel5.setVisible(true);
-                jLabel5.setText("Correcto");
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel5.setVisible(true);
-                jLabel5.setText("No es correcto");
-                jLabel5.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_EmailFocusLost
+        //
+        String campo = "Campos:";
+        String nombre = JT_Nombre.getText().toUpperCase();
+        String apellido = JT_Apellido.getText().toUpperCase();
+        String domicilio = JT_Domicilio.getText().toUpperCase();
+        String telefono = JT_Telefono.getText().toUpperCase();
+        String email = JT_Email.getText().toUpperCase();
+        int edad = Integer.parseInt(JT_Edad.getText());
+        String edadCampo = JT_Edad.getText();
+        Date fecha = JD_DateChooser.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+        String fechaNacimiento = sdf.format(fecha);
+        String sexo;
 
-    private void JT_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusLost
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[0-9]");
-        if (!JT_Nombre.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Nombre.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel2.setVisible(true);
-                jLabel2.setText("No es un nombre");
-                jLabel2.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel2.setVisible(true);
-                jLabel2.setText("Correcto");
-                jLabel2.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_NombreFocusLost
-    // Validacion de apellido
-    private void JT_ApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_ApellidoFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[0-9]");
-        // Podemos ver si se tiene numeros, si este es asi entonces mostrar
-        if (!JT_Apellido.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Apellido.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (!matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel3.setVisible(true);
-                jLabel3.setText("Correcto");
-                jLabel3.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel3.setVisible(true);
-                jLabel3.setText("No es un apellido");
-                jLabel3.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_ApellidoFocusLost
+        if(JR_Masculino.isSelected()){
+            sexo = "Masculino";
+        } else {
 
-    private void JT_TelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_TelefonoFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[A-Za-z]");
-        if (!JT_Telefono.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Telefono.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel4.setVisible(true);
-                jLabel4.setText("No es un nombre");
-                jLabel4.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel4.setVisible(true);
-                jLabel4.setText("Correcto");
-                jLabel4.updateUI();
-            }
+            sexo = "Femenino";
         }
-    }//GEN-LAST:event_JT_TelefonoFocusLost
 
-    private void JT_EdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EdadFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[A-Za-z]");
-        if (!JT_Edad.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Edad.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel6.setVisible(true);
-                jLabel6.setText("No es una edad");
-                jLabel6.updateUI();
+        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi
+        // {nombre: valorNombre,
+            //  apellido: apellido,
+            //  etc,
+            //          }
+        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
+        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
+        // Nombre
+        if(nombre.isEmpty()){
+            System.out.println("Nombre vacio");
+            campo = campo.concat("+Nombre");
+        }
+        // Apellido
+        if (apellido.isEmpty()) {
+            System.out.println("Apellido vacio");
+            campo = campo.concat("+Apellido");
+        }
+        // Domicilio
+        if (domicilio.isEmpty()) {
+            System.out.println("Domicilio vacio");
+            campo = campo.concat("+Domicilio");
+        }
+        // Telefono
+        if (telefono.isEmpty()) {
+            System.out.println("Telefono vacio");
+            campo = campo.concat("+Telefono");
+        }
+        // Email
+        if (email.isEmpty()) {
+            System.out.println("Email vacio");
+            campo = campo.concat("+Email");
+        }
+        // Faltaria la fecha la cual se puede sacar con la edad
+        // Edad
+        if(edadCampo.isEmpty()){
+            System.out.println("Edad vacio");
+            campo = campo.concat("+Edad");
+        }
+
+        if("Campos:".equals(campo)){
+            System.out.println(campo);
+            // Si no hay ningun campo vacio
+            // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
+            //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
+            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+
+            // Luego podemos mandar a llamar las validaciones, si este estan bien, entonces podemos ya psaar al pregunta
+            // de que si queremos agregar
+            // Por el momento asi esta bien, luego hacemos una funcion para checar si las validaciones de los campos estan bien
+
+            //@todo
+            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere agregar?");
+            // Saber que retorna si presiona
+            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
+            System.out.println(nomabusPa);
+            if(0 == nomabusPa){
+                // Metodos error
+                try {
+                    Metodos enlace = new Metodos();
+                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: "+e);
+                } finally {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
+                }
+
+                System.exit(0);
             } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel6.setVisible(true);
-                jLabel6.setText("Correcto");
-                jLabel6.updateUI();
+                System.out.println("Nos cancela");
+                System.exit(0);
+                System.out.println("ADIÓS");
             }
         } else {
-            jLabel6.setText("No hay una edad");
+            // Split y luego pop
+            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
         }
-    }//GEN-LAST:event_JT_EdadFocusLost
+
+        // Comprobacion de los input
+        // --Primero se tiene que comprobar que todos tengan algo, entonces
+        // ¿Como podemos comprobar que todods tengan algo?
+        // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
+        // Entonces podemos devolver una alerta que diga que falta
+        // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
+
+    }//GEN-LAST:event_JB_AgregarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        int fila = jTable1.getSelectedRow();
-        if(fila == -1){
-            JOptionPane.showMessageDialog(null, "No se selecciono la fila");
-        } else {
-            
-            // Obtenemos los valores de la fila
-            idc = Integer.parseInt((String) jTable1.getValueAt(fila, 0).toString());
-            String id = (String) jTable1.getValueAt(fila, 0).toString();
-            String Nombre = (String) jTable1.getValueAt(fila, 1);
-            String apellido = (String) jTable1.getValueAt(fila, 2);
-            String domicilio = (String) jTable1.getValueAt(fila, 3);
-            String telefono = (String) jTable1.getValueAt(fila, 4);
-            String email = (String) jTable1.getValueAt(fila, 5);
-            //Fecha
-            String fechaNacimiento = (String) jTable1.getValueAt(fila, 6);
-            String date = fechaNacimiento;
-            try {
-                java.util.Date date2 = new SimpleDateFormat("dd/MMM/yyyy").parse(date);
-                JD_DateChooser.setDate(date2);
-            } catch (ParseException ex) {
-                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            // -- Fin de fecha
-            String sexo = (String) jTable1.getValueAt(fila, 7);
-            String edad = (String) jTable1.getValueAt(fila, 8).toString();
-            Blob foto = (Blob) jTable1.getValueAt(fila, 9);
-            JL_ID2.setText(id);
-            JT_Nombre.setText(Nombre);
-            JT_Apellido.setText(apellido);
-            JT_Domicilio.setText(domicilio);
-            JT_Telefono.setText(telefono);
-            JT_Email.setText(email);
-            JT_Edad.setText(edad);
-            //JD_DateChooser.setDate(d1);
-            if("Masculino".equals(sexo)){
-                JR_Femenino.setSelected(false);
-                JR_Masculino.setSelected(true);
-            } else {
-                JR_Femenino.setSelected(true);
-                JR_Masculino.setSelected(false);
-
-            }
-            // Fotografia
-            mostrarFoto(idc);
-            JB_Agregar.setEnabled(false);
-            mostrarBotones();
-            System.out.println(foto);
-        }  
     }//GEN-LAST:event_jTable1MouseClicked
 
     private Image convertirImagen(byte[] bytes) throws IOException {

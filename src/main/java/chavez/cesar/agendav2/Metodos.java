@@ -50,6 +50,7 @@ public String[] Buscar(String nomabus){
                 instruccion.setString(1, nomabus);
                 try{
                     ResultSet rs = instruccion.executeQuery();
+                    
                     while(rs.next()){
                         resultado[0]=rs.getString("id");
                         resultado[1]=rs.getString("Nombre");
@@ -117,31 +118,58 @@ public String[] Buscar(String nomabus){
         Connection conexion = obtenerConexion();
         
         try {
-            String query = "UPDATE Personas set nombre=?, apellido=?, domicilio=?, telefono=?, email=?, fechanacimiento=?, sexo=?, edad=? where id=?";
-            try(PreparedStatement instruccion = conexion.prepareStatement(query)) {
-                
-                // Colocamos los datos
-                // Ingresamos el id para actualizar las cosas
-                instruccion.setString(1, Nombre);
-                instruccion.setString(2, Apellido);
-                instruccion.setString(3, Domicilio);
-                instruccion.setString(4, Telefono);
-                instruccion.setString(5, Email);
-                instruccion.setString(6, FechaNac);
-                instruccion.setString(7, Sexo);
-                instruccion.setInt(8, Edad);
-                // El problema es la foto
-                // instruccion.setBinaryStream(9, fis, Longitud);
-                // Aqui va 10
-                System.out.println(fis);
-                instruccion.setInt(9, ID);
-                int n = instruccion.executeUpdate();
-                if(n>0){
-                    JOptionPane.showMessageDialog(null, "Datos actualizados");
+            //Se tiene que
+            if(Longitud != 0){
+                String query = "UPDATE Personas set nombre=?, apellido=?, domicilio=?, telefono=?, email=?, fechanacimiento=?, sexo=?, edad=?, foto=? where id=?";
+                try(PreparedStatement instruccion = conexion.prepareStatement(query)) {
+                    // Colocamos los datos
+                    // Ingresamos el id para actualizar las cosas
+                    instruccion.setString(1, Nombre);
+                    instruccion.setString(2, Apellido);
+                    instruccion.setString(3, Domicilio);
+                    instruccion.setString(4, Telefono);
+                    instruccion.setString(5, Email);
+                    instruccion.setString(6, FechaNac);
+                    instruccion.setString(7, Sexo);
+                    instruccion.setInt(8, Edad);
+                    // El problema es la foto
+                    instruccion.setBinaryStream(9, fis, Longitud);
+                    // Aqui va 10
+                    instruccion.setInt(10, ID);
+                    System.out.println("Con foto");
+                    int n = instruccion.executeUpdate();
+                    if (n > 0) {
+                        JOptionPane.showMessageDialog(null, "Datos actualizados");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+
                 }
-            } catch (Exception e) {
-                System.out.println(e);
+            } else {
+                String query = "UPDATE Personas set nombre=?, apellido=?, domicilio=?, telefono=?, email=?, fechanacimiento=?, sexo=?, edad=? where id=?";
+                try ( PreparedStatement instruccion = conexion.prepareStatement(query)) {
+                    
+                    // Colocamos los datos
+                    // Ingresamos el id para actualizar las cosas
+                    instruccion.setString(1, Nombre);
+                    instruccion.setString(2, Apellido);
+                    instruccion.setString(3, Domicilio);
+                    instruccion.setString(4, Telefono);
+                    instruccion.setString(5, Email);
+                    instruccion.setString(6, FechaNac);
+                    instruccion.setString(7, Sexo);
+                    instruccion.setInt(8, Edad);
+                    instruccion.setInt(9, ID);
+                    System.out.println("Sin foto");
+                    int n = instruccion.executeUpdate();
+                    if (n > 0) {
+                        JOptionPane.showMessageDialog(null, "Datos actualizados");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
+            
         } catch (Exception e) {
             System.out.println(e);
         } finally{
