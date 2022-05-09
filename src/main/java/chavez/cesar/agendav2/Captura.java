@@ -564,6 +564,7 @@ public final class Captura extends javax.swing.JInternalFrame {
         rs = instruccion.executeQuery();
         Object[] persona = new Object[9];
         modelo =(DefaultTableModel) jTable1.getModel();
+        modelo.getDataVector().removeAllElements();
         while (rs.next()){
             persona[0] = rs.getInt("Id");
             persona[1] = rs.getString("nombre");
