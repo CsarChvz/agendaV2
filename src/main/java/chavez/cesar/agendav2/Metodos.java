@@ -46,10 +46,10 @@ public String[] Buscar(String nomabus){
         try{
             String query = "select * from personas where Nombre=?";
             PreparedStatement instruccion = conexion.prepareStatement(query);
-            
                 instruccion.setString(1, nomabus);
                 try{
                     ResultSet rs = instruccion.executeQuery();
+                    // El next es para la ultima fila
                     while(rs.next()){
                         resultado[0]=rs.getString("id");
                         resultado[1]=rs.getString("Nombre");
@@ -61,7 +61,9 @@ public String[] Buscar(String nomabus){
                         resultado[7]=rs.getString("Sexo");
                         resultado[8]=rs.getString("Edad");
                     }
+
                     rs.close();
+
                 }catch(SQLException ex){
                     JOptionPane.showMessageDialog(null, "Exception: " + ex);
                 }
@@ -80,7 +82,38 @@ public String[] Buscar(String nomabus){
         
 
     }
-    
+       
+    public int vecesRepetidas(String nombre){
+        int n=0;
+        Connection conexion = obtenerConexion();
+        try {
+            String query = "select * from personas where Nombre=?";
+            PreparedStatement instruccion = conexion.prepareStatement(query);
+            instruccion.setString(1, nombre);
+            try {
+                ResultSet rs = instruccion.executeQuery();
+                // El next es para la ultima fila
+                while (rs.next()) {
+                    n++;
+                }
+                rs.close();
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Exception: " + ex);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                login.log(Level.SEVERE, null, ex);
+            }
+        }
+        return n;
+    }
     public void Agregar(String Nombre, String Apellido, String Domicilio, String Telefono, String Email, String FechaNac, String Sexo, int Edad, FileInputStream fis, int Longitud){
         
         Connection conexion = obtenerConexion();

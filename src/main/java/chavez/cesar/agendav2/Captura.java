@@ -843,14 +843,14 @@ public final class Captura extends javax.swing.JInternalFrame {
         if (nomabus != null) {
 
             String[] resultado = null;
+            int nVeces = enlace.vecesRepetidas(nomabus);
             resultado = enlace.Buscar(nomabus);
-            try {
-                busquedaConsultar(nomabus);
-            } catch (SQLException ex) {
-                Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (resultado[0] == null) {
-                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + nomabus.toUpperCase());
+            if(nVeces>1){
+                try {
+                    busquedaConsultar(nomabus);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 JL_ID2.setText(resultado[0]);
                 JT_Nombre.setText(resultado[1]);
@@ -878,15 +878,19 @@ public final class Captura extends javax.swing.JInternalFrame {
                 } else {
                     JR_Femenino.setSelected(true);
                 }
-            }
+                mostrarFoto(Integer.parseInt(resultado[0]));
+                // Error aqui
+                // mostrarFoto(Integer.parseInt(JL_ID.getText()));
 
-            // Error aqui
-            mostrarFoto(Integer.parseInt(JL_ID2.getText()));
-            // mostrarFoto(Integer.parseInt(JL_ID.getText()));
-
-            // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
-            if (!JL_ID2.getText().isEmpty()) {
-                JB_Agregar.setEnabled(false);
+                // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
+                if (!JL_ID2.getText().isEmpty()) {
+                    JB_Agregar.setEnabled(false);
+                }
+                try {
+                    consultar();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_JB_BuscarActionPerformed
