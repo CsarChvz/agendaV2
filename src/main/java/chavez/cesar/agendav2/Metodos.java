@@ -114,6 +114,39 @@ public String[] Buscar(String nomabus){
         }
         return n;
     }
+    
+    public String[] existenciaUsuario(String nombre){
+        String[] nombreExistencia = new String[1];
+        Connection conexion = obtenerConexion();
+        try {
+            String query = "select * from personas where Nombre=?";
+            PreparedStatement instruccion = conexion.prepareStatement(query);
+            instruccion.setString(1, nombre);
+            try {
+                ResultSet rs = instruccion.executeQuery();
+                // El next es para la ultima fila
+                while (rs.next()) {
+                    nombreExistencia[0] = rs.getString("Nombre");
+                }
+
+                rs.close();
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Exception: " + ex);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                login.log(Level.SEVERE, null, ex);
+            }
+        }
+        return nombreExistencia;
+    }
     public void Agregar(String Nombre, String Apellido, String Domicilio, String Telefono, String Email, String FechaNac, String Sexo, int Edad, FileInputStream fis, int Longitud){
         
         Connection conexion = obtenerConexion();

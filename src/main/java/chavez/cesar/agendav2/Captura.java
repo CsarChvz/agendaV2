@@ -844,52 +844,60 @@ public final class Captura extends javax.swing.JInternalFrame {
 
             String[] resultado = null;
             int nVeces = enlace.vecesRepetidas(nomabus);
+            // Hacer un metodo para checar si existe el usuario y si no mostrar wea
+            String[] nombreExistencia = enlace.existenciaUsuario(nomabus);
             resultado = enlace.Buscar(nomabus);
+            
             if(nVeces>1){
                 try {
+                    JOptionPane.showMessageDialog(rootPane, "Existen "+nVeces+" usuarios con el nombre igual \n Seleccione el que quiera en la tabla");
                     busquedaConsultar(nomabus);
                 } catch (SQLException ex) {
                     Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                JL_ID2.setText(resultado[0]);
-                JT_Nombre.setText(resultado[1]);
-                JT_Apellido.setText(resultado[2]);
-                JT_Domicilio.setText(resultado[3]);
-                JT_Telefono.setText(resultado[4]);
-                JT_Email.setText(resultado[5]);
-
-                try {
-                    SimpleDateFormat formato = new SimpleDateFormat("dd/MMM/yyyy");
-                    Date fechanac = formato.parse(resultado[6]);
-                    JD_DateChooser.setDate(fechanac);
-                } catch (ParseException pex) {
-                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
-                } finally {
-                    // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
-                    JB_Modificar.setVisible(true);
-                    JB_Eliminar.setVisible(true);
-                }
-
-                JT_Edad.setText(resultado[8]);
-
-                if (resultado[7].equals("Masculino")) {
-                    JR_Masculino.setSelected(true);
+                if(nombreExistencia[0]==null){
+                    JOptionPane.showMessageDialog(rootPane, "No se encontro a "+nomabus);
                 } else {
-                    JR_Femenino.setSelected(true);
-                }
-                mostrarFoto(Integer.parseInt(resultado[0]));
-                // Error aqui
-                // mostrarFoto(Integer.parseInt(JL_ID.getText()));
+                    JL_ID2.setText(resultado[0]);
+                    JT_Nombre.setText(resultado[1]);
+                    JT_Apellido.setText(resultado[2]);
+                    JT_Domicilio.setText(resultado[3]);
+                    JT_Telefono.setText(resultado[4]);
+                    JT_Email.setText(resultado[5]);
 
-                // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
-                if (!JL_ID2.getText().isEmpty()) {
-                    JB_Agregar.setEnabled(false);
-                }
-                try {
-                    consultar();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        SimpleDateFormat formato = new SimpleDateFormat("dd/MMM/yyyy");
+                        Date fechanac = formato.parse(resultado[6]);
+                        JD_DateChooser.setDate(fechanac);
+                    } catch (ParseException pex) {
+                        Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
+                    } finally {
+                        // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
+                        JB_Modificar.setVisible(true);
+                        JB_Eliminar.setVisible(true);
+                    }
+
+                    JT_Edad.setText(resultado[8]);
+
+                    if (resultado[7].equals("Masculino")) {
+                        JR_Masculino.setSelected(true);
+                    } else {
+                        JR_Femenino.setSelected(true);
+                    }
+                    mostrarFoto(Integer.parseInt(resultado[0]));
+                    // Error aqui
+                    // mostrarFoto(Integer.parseInt(JL_ID.getText()));
+
+                    // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
+                    if (!JL_ID2.getText().isEmpty()) {
+                        JB_Agregar.setEnabled(false);
+                    }
+                    try {
+                        consultar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }
