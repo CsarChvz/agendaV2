@@ -4,6 +4,7 @@
  */
 package chavez.cesar.agendav2;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -40,6 +41,7 @@ import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.util.Date;
+import javax.swing.JPanel;
 import javax.swing.event.TableModelEvent;
 /**
  *
@@ -98,6 +100,8 @@ public final class Captura extends javax.swing.JInternalFrame {
 
         JFCFoto = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        MainPanel = new javax.swing.JPanel();
         JP_Panel1 = new javax.swing.JPanel();
         JL_Nombre = new javax.swing.JLabel();
         JL_Apellido = new javax.swing.JLabel();
@@ -124,9 +128,6 @@ public final class Captura extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        JP_Panel2 = new javax.swing.JPanel();
-        JL_Foto = new javax.swing.JLabel();
-        JB_Foto = new javax.swing.JButton();
         JP_Panel3 = new javax.swing.JPanel();
         JB_Agregar = new javax.swing.JButton();
         JB_Modificar = new javax.swing.JButton();
@@ -135,8 +136,9 @@ public final class Captura extends javax.swing.JInternalFrame {
         JB_Salir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         JB_Limpiar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        Tabla = new javax.swing.JPanel();
+        JP_Panel2 = new javax.swing.JPanel();
+        JL_Foto = new javax.swing.JLabel();
+        JB_Foto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -228,6 +230,159 @@ public final class Captura extends javax.swing.JInternalFrame {
 
         jLabel6.setText("jLabel6");
 
+        JP_Panel3.setOpaque(false);
+
+        JB_Agregar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/plus.png")); // NOI18N
+        JB_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AgregarActionPerformed(evt);
+            }
+        });
+
+        JB_Modificar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/edit.png")); // NOI18N
+        JB_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_ModificarActionPerformed(evt);
+            }
+        });
+
+        JB_Buscar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/search.png")); // NOI18N
+        JB_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_BuscarActionPerformed(evt);
+            }
+        });
+
+        JB_Eliminar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/delete.png")); // NOI18N
+        JB_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_EliminarActionPerformed(evt);
+            }
+        });
+
+        JB_Salir.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/logout.png")); // NOI18N
+        JB_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JP_Panel3Layout = new javax.swing.GroupLayout(JP_Panel3);
+        JP_Panel3.setLayout(JP_Panel3Layout);
+        JP_Panel3Layout.setHorizontalGroup(
+            JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_Panel3Layout.createSequentialGroup()
+                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JB_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(JB_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JB_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_Panel3Layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(JB_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+        JP_Panel3Layout.setVerticalGroup(
+            JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_Panel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JB_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JB_Modificar)
+                    .addComponent(JB_Eliminar))
+                .addGap(18, 18, 18)
+                .addComponent(JB_Salir)
+                .addGap(27, 27, 27))
+        );
+
+        JB_Limpiar.setText("Limpiar");
+        JB_Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_LimpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(JB_Limpiar)
+                .addGap(15, 15, 15))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(JB_Limpiar)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        JP_Panel2.setOpaque(false);
+
+        JL_Foto.setBackground(new java.awt.Color(255, 255, 255));
+        JL_Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
+
+        JB_Foto.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/camera.png")); // NOI18N
+        JB_Foto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_FotoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JP_Panel2Layout = new javax.swing.GroupLayout(JP_Panel2);
+        JP_Panel2.setLayout(JP_Panel2Layout);
+        JP_Panel2Layout.setHorizontalGroup(
+            JP_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_Panel2Layout.createSequentialGroup()
+                .addGroup(JP_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JP_Panel2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(JL_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JP_Panel2Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(JB_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        JP_Panel2Layout.setVerticalGroup(
+            JP_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_Panel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(JL_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JB_Foto)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nombre", "Apellido", "Domicilio", "Telefono", "Email", "FechaNacimiento", "Sexo", "Edad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout JP_Panel1Layout = new javax.swing.GroupLayout(JP_Panel1);
         JP_Panel1.setLayout(JP_Panel1Layout);
         JP_Panel1Layout.setHorizontalGroup(
@@ -287,8 +442,20 @@ public final class Captura extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(jLabel3)))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                                .addComponent(jLabel3))))
+                    .addGroup(JP_Panel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JP_Panel1Layout.createSequentialGroup()
+                                .addComponent(JP_Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(169, 169, 169)
+                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JP_Panel1Layout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JP_Panel1Layout.setVerticalGroup(
             JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,204 +477,65 @@ public final class Captura extends javax.swing.JInternalFrame {
                     .addComponent(JL_Apellido)
                     .addComponent(JT_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(9, 9, 9)
-                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JL_Domicilio)
-                    .addComponent(JT_Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JL_Telefono)
-                    .addComponent(JT_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JL_Email)
-                    .addComponent(JT_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(12, 12, 12)
                 .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JL_FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(JP_Panel1Layout.createSequentialGroup()
-                        .addComponent(JD_DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(9, 9, 9)
                         .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JR_Femenino)
-                            .addComponent(JR_Masculino)
-                            .addComponent(JL_Sexo))
+                            .addComponent(JL_Domicilio)
+                            .addComponent(JT_Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JL_Edad)
-                            .addComponent(jLabel6))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                            .addComponent(JL_Telefono)
+                            .addComponent(JT_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JL_Email)
+                            .addComponent(JT_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(12, 12, 12)
+                        .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JL_FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JP_Panel1Layout.createSequentialGroup()
+                                .addComponent(JD_DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JR_Femenino)
+                                    .addComponent(JR_Masculino)
+                                    .addComponent(JL_Sexo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(JP_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(JT_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JL_Edad)
+                                    .addComponent(jLabel6))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(JP_Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(JP_Panel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        JP_Panel2.setOpaque(false);
-
-        JL_Foto.setBackground(new java.awt.Color(255, 255, 255));
-        JL_Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
-
-        JB_Foto.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/camera.png")); // NOI18N
-        JB_Foto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_FotoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout JP_Panel2Layout = new javax.swing.GroupLayout(JP_Panel2);
-        JP_Panel2.setLayout(JP_Panel2Layout);
-        JP_Panel2Layout.setHorizontalGroup(
-            JP_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_Panel2Layout.createSequentialGroup()
-                .addGroup(JP_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JP_Panel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(JL_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JP_Panel2Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(JB_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+        javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
+        MainPanel.setLayout(MainPanelLayout);
+        MainPanelLayout.setHorizontalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JP_Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        JP_Panel2Layout.setVerticalGroup(
-            JP_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_Panel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(JL_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(JB_Foto)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-
-        JP_Panel3.setOpaque(false);
-
-        JB_Agregar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/plus.png")); // NOI18N
-        JB_Agregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_AgregarActionPerformed(evt);
-            }
-        });
-
-        JB_Modificar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/edit.png")); // NOI18N
-        JB_Modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_ModificarActionPerformed(evt);
-            }
-        });
-
-        JB_Buscar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/search.png")); // NOI18N
-        JB_Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_BuscarActionPerformed(evt);
-            }
-        });
-
-        JB_Eliminar.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/delete.png")); // NOI18N
-        JB_Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_EliminarActionPerformed(evt);
-            }
-        });
-
-        JB_Salir.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/Imagenes/logout.png")); // NOI18N
-        JB_Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_SalirActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout JP_Panel3Layout = new javax.swing.GroupLayout(JP_Panel3);
-        JP_Panel3.setLayout(JP_Panel3Layout);
-        JP_Panel3Layout.setHorizontalGroup(
-            JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_Panel3Layout.createSequentialGroup()
-                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JB_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(JB_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JB_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                    .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_Panel3Layout.createSequentialGroup()
+        MainPanelLayout.setVerticalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JB_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
-        JP_Panel3Layout.setVerticalGroup(
-            JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_Panel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JB_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(JP_Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JB_Modificar)
-                    .addComponent(JB_Eliminar))
-                .addGap(18, 18, 18)
-                .addComponent(JB_Salir)
-                .addGap(27, 27, 27))
-        );
-
-        JB_Limpiar.setText("Limpiar");
-        JB_Limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_LimpiarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(JB_Limpiar)
-                .addGap(15, 15, 15))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(JB_Limpiar)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Nombre", "Apellido", "Domicilio", "Telefono", "Email", "FechaNacimiento", "Sexo", "Edad"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout TablaLayout = new javax.swing.GroupLayout(Tabla);
-        Tabla.setLayout(TablaLayout);
-        TablaLayout.setHorizontalGroup(
-            TablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TablaLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        TablaLayout.setVerticalGroup(
-            TablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TablaLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addComponent(JP_Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -515,45 +543,14 @@ public final class Captura extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JP_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(JP_Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Tabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(JP_Panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(JP_Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JP_Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Tabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7))))
-                .addContainerGap())
+                .addGap(6, 6, 6)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -681,139 +678,6 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_JB_FotoActionPerformed
-
-    private void JT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_IDActionPerformed
-        // TODO add your handling code here:
-        if(!JT_ID.getText().isEmpty()){
-        }
-    }//GEN-LAST:event_JT_IDActionPerformed
-
-    private void JT_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusLost
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[0-9]");
-        if (!JT_Nombre.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Nombre.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel2.setVisible(true);
-                jLabel2.setText("No es un nombre");
-                jLabel2.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel2.setVisible(true);
-                jLabel2.setText("Correcto");
-                jLabel2.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_NombreFocusLost
-
-    private void JT_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusGained
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_JT_NombreFocusGained
-
-    private void JT_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EdadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JT_EdadActionPerformed
-
-    private void JT_EdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EdadFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[A-Za-z]");
-        if (!JT_Edad.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Edad.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel6.setVisible(true);
-                jLabel6.setText("No es una edad");
-                jLabel6.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel6.setVisible(true);
-                jLabel6.setText("Correcto");
-                jLabel6.updateUI();
-            }
-        } else {
-            jLabel6.setText("No hay una edad");
-        }
-    }//GEN-LAST:event_JT_EdadFocusLost
-
-    private void JT_EmailInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_JT_EmailInputMethodTextChanged
-        // TODO add your handling code here:
-        if(!JT_Email.getText().isEmpty()){
-            // Poner que coincida con el regex, si no coincide, entoncs modificaremos el label segun correspondiente
-            System.out.println("aa");
-
-        } else {
-        }
-    }//GEN-LAST:event_JT_EmailInputMethodTextChanged
-
-    private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
-        if(!JT_Email.getText().isEmpty()){
-            Matcher matcher = pattern.matcher(JT_Email.getText());
-            boolean matchFound = matcher.find();
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel5.setVisible(true);
-                jLabel5.setText("Correcto");
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel5.setVisible(true);
-                jLabel5.setText("No es correcto");
-                jLabel5.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_EmailFocusLost
-
-    private void JT_TelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_TelefonoFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[A-Za-z]");
-        if (!JT_Telefono.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Telefono.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel4.setVisible(true);
-                jLabel4.setText("No es un nombre");
-                jLabel4.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel4.setVisible(true);
-                jLabel4.setText("Correcto");
-                jLabel4.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_TelefonoFocusLost
-
-    // Validacion de apellido
-    private void JT_ApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_ApellidoFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("[0-9]");
-        // Podemos ver si se tiene numeros, si este es asi entonces mostrar
-        if (!JT_Apellido.getText().isEmpty()) {
-            Matcher matcher = pattern.matcher(JT_Apellido.getText());
-            boolean matchFound = matcher.find();
-            System.out.println(matchFound);
-            if (!matchFound) {
-                // En esta parte podemos poner un icono con una palomita
-                jLabel3.setVisible(true);
-                jLabel3.setText("Correcto");
-                jLabel3.updateUI();
-            } else {
-                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
-                jLabel3.setVisible(true);
-                jLabel3.setText("No es un apellido");
-                jLabel3.updateUI();
-            }
-        }
-    }//GEN-LAST:event_JT_ApellidoFocusLost
 
     private void JB_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LimpiarActionPerformed
         // TODO add your handling code here:
@@ -1208,6 +1072,138 @@ public final class Captura extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void JT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_IDActionPerformed
+        // TODO add your handling code here:
+        if(!JT_ID.getText().isEmpty()){
+        }
+    }//GEN-LAST:event_JT_IDActionPerformed
+
+    private void JT_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusLost
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[0-9]");
+        if (!JT_Nombre.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Nombre.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel2.setVisible(true);
+                jLabel2.setText("No es un nombre");
+                jLabel2.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel2.setVisible(true);
+                jLabel2.setText("Correcto");
+                jLabel2.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_NombreFocusLost
+
+    private void JT_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JT_NombreFocusGained
+
+    private void JT_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JT_EdadActionPerformed
+
+    private void JT_EdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EdadFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[A-Za-z]");
+        if (!JT_Edad.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Edad.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel6.setVisible(true);
+                jLabel6.setText("No es una edad");
+                jLabel6.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel6.setVisible(true);
+                jLabel6.setText("Correcto");
+                jLabel6.updateUI();
+            }
+        } else {
+            jLabel6.setText("No hay una edad");
+        }
+    }//GEN-LAST:event_JT_EdadFocusLost
+
+    private void JT_EmailInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_JT_EmailInputMethodTextChanged
+        // TODO add your handling code here:
+        if(!JT_Email.getText().isEmpty()){
+            // Poner que coincida con el regex, si no coincide, entoncs modificaremos el label segun correspondiente
+            System.out.println("aa");
+
+        } else {
+        }
+    }//GEN-LAST:event_JT_EmailInputMethodTextChanged
+
+    private void JT_EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_EmailFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+        if(!JT_Email.getText().isEmpty()){
+            Matcher matcher = pattern.matcher(JT_Email.getText());
+            boolean matchFound = matcher.find();
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel5.setVisible(true);
+                jLabel5.setText("Correcto");
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel5.setVisible(true);
+                jLabel5.setText("No es correcto");
+                jLabel5.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_EmailFocusLost
+
+    private void JT_TelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_TelefonoFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[A-Za-z]");
+        if (!JT_Telefono.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Telefono.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel4.setVisible(true);
+                jLabel4.setText("No es un nombre");
+                jLabel4.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel4.setVisible(true);
+                jLabel4.setText("Correcto");
+                jLabel4.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_TelefonoFocusLost
+
+    // Validacion de apellido
+    private void JT_ApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_ApellidoFocusLost
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("[0-9]");
+        // Podemos ver si se tiene numeros, si este es asi entonces mostrar
+        if (!JT_Apellido.getText().isEmpty()) {
+            Matcher matcher = pattern.matcher(JT_Apellido.getText());
+            boolean matchFound = matcher.find();
+            System.out.println(matchFound);
+            if (!matchFound) {
+                // En esta parte podemos poner un icono con una palomita
+                jLabel3.setVisible(true);
+                jLabel3.setText("Correcto");
+                jLabel3.updateUI();
+            } else {
+                // Hacer algo con el ID que si detecta en la parte de agregar un ID, entonces no se va a agregar nada, solo se va a poder modificar e eliminar
+                jLabel3.setVisible(true);
+                jLabel3.setText("No es un apellido");
+                jLabel3.updateUI();
+            }
+        }
+    }//GEN-LAST:event_JT_ApellidoFocusLost
+
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Iterator lector = ImageIO.getImageReadersByFormatName("jpg");
@@ -1254,7 +1250,7 @@ public final class Captura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JT_ID;
     private javax.swing.JTextField JT_Nombre;
     private javax.swing.JTextField JT_Telefono;
-    private javax.swing.JPanel Tabla;
+    private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1267,3 +1263,4 @@ public final class Captura extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
+

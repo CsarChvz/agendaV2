@@ -32,9 +32,11 @@ Limpiar ----->>> Terminado
 
 10. En caso de buscar a una persona y haya dos o más Registros (Personas) con el mismo Nombre, mostrar en la tabla de la parte inferior los Registros repetidos, para poder seleccionar una u otra haciendo doble click sobre cualquiera de esos Registros, extraer los datos (información) a los campos (cajas de texto) para poder modificar la información.
 
----->>> La ultima parte esta terminada, solo faltaria ver si existen dos personas con el mismo nombre
+---->>> Terminado
 11. Hacer las ventanas responsivas.
 
+
+12. (Opcional) Comentar el codigo
 ------- Final de diseño de la aplicacion ----------
 --- Saving
 
