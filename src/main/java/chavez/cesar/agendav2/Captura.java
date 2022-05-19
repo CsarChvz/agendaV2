@@ -107,6 +107,7 @@ public final class Captura extends javax.swing.JInternalFrame {
 
         JFCFoto = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jP_Inputs = new javax.swing.JPanel();
         JL_ID = new javax.swing.JLabel();
         JL_Nombre = new javax.swing.JLabel();
@@ -148,8 +149,11 @@ public final class Captura extends javax.swing.JInternalFrame {
 
         jP_Inputs.setOpaque(false);
 
+        JL_ID.setForeground(new java.awt.Color(255, 255, 255));
         JL_ID.setText("ID");
 
+        JL_Nombre.setBackground(new java.awt.Color(255, 255, 255));
+        JL_Nombre.setForeground(new java.awt.Color(255, 255, 255));
         JL_Nombre.setText("Nombre");
 
         JT_Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -161,8 +165,10 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("jLabel2");
 
+        JL_Apellido.setForeground(new java.awt.Color(255, 255, 255));
         JL_Apellido.setText("Apellido");
 
         JT_Apellido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -171,10 +177,13 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("jLabel3");
 
+        JL_Domicilio.setForeground(new java.awt.Color(255, 255, 255));
         JL_Domicilio.setText("Domicilio");
 
+        JL_Telefono.setForeground(new java.awt.Color(255, 255, 255));
         JL_Telefono.setText("Telefono");
 
         JT_Telefono.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -183,6 +192,7 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         });
 
+        JL_Email.setForeground(new java.awt.Color(255, 255, 255));
         JL_Email.setText("Email");
 
         JT_Email.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -198,18 +208,27 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("jLabel4");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("jLabel5");
 
+        JL_FechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         JL_FechaNacimiento.setText("Fecha de nacimiento");
 
+        JL_Sexo.setForeground(new java.awt.Color(255, 255, 255));
         JL_Sexo.setText("Sexo");
 
+        buttonGroup1.add(JR_Femenino);
+        JR_Femenino.setForeground(new java.awt.Color(255, 255, 255));
         JR_Femenino.setText("Femenino");
 
+        buttonGroup1.add(JR_Masculino);
+        JR_Masculino.setForeground(new java.awt.Color(255, 255, 255));
         JR_Masculino.setText("Masculino");
 
+        JL_Edad.setForeground(new java.awt.Color(255, 255, 255));
         JL_Edad.setText("Edad");
 
         JT_Edad.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -224,6 +243,8 @@ public final class Captura extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setText("jLabel6");
+
+        JL_ID2.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jP_InputsLayout = new javax.swing.GroupLayout(jP_Inputs);
         jP_Inputs.setLayout(jP_InputsLayout);
@@ -433,9 +454,9 @@ public final class Captura extends javax.swing.JInternalFrame {
                     .addComponent(JB_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_BotonesLayout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
-                .addGroup(jP_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JB_Limpiar)
-                    .addComponent(JB_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jP_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JB_Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JB_Limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
                 .addGap(49, 49, 49))
         );
         jP_BotonesLayout.setVerticalGroup(
@@ -478,41 +499,38 @@ public final class Captura extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Escritorio/NotasClase}/agendaV2/src/main/java/chavez/cesar/agendav2/awa/a.jpg")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("/home/depresionatom/Descargas/agendaV2/src/main/java/Imagenes/fondo_Captura.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jP_Inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jP_Botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(jP_Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 31, Short.MAX_VALUE))
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(350, 350, 350)
+                .addComponent(jP_Botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGap(6, 6, 6)
+                .addComponent(jP_Inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(361, 361, 361)
+                .addComponent(jP_Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jP_Inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jP_Botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jP_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(400, 400, 400)
+                .addGap(191, 191, 191)
+                .addComponent(jP_Botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jP_Inputs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jP_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -640,346 +658,6 @@ public final class Captura extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_JB_FotoActionPerformed
-
-    private void JB_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LimpiarActionPerformed
-        // TODO add your handling code here:
-        limpiar();
-        JB_Agregar.setEnabled(true);
-    }//GEN-LAST:event_JB_LimpiarActionPerformed
-
-    private void JB_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SalirActionPerformed
-        // TODO add your handling code here:
-
-        System.exit(0);
-        System.out.println("ADIÓS");
-    }//GEN-LAST:event_JB_SalirActionPerformed
-
-    private void JB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EliminarActionPerformed
-        // TODO add your handling code here:
-        Metodos enlace = new Metodos();
-        int ID = Integer.parseInt(JL_ID2.getText());
-        int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere eliminar?");
-        if (nomabusPa == 0) {
-            try {
-                enlace.Eliminar(ID);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + ID);
-
-            }
-        }
-    }//GEN-LAST:event_JB_EliminarActionPerformed
-
-    private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BuscarActionPerformed
-        Metodos enlace = new Metodos();
-        nomabus = JOptionPane.showInternalInputDialog(rootPane, "Nombre a Buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
-        if (nomabus != null) {
-
-            String[] resultado = null;
-            int nVeces = enlace.vecesRepetidas(nomabus);
-            // Hacer un metodo para checar si existe el usuario y si no mostrar wea
-            String[] nombreExistencia = enlace.existenciaUsuario(nomabus);
-            resultado = enlace.Buscar(nomabus);
-            
-            if(nVeces>1){
-                try {
-                    jTable1.setEnabled(true);
-                    JOptionPane.showMessageDialog(rootPane, "Existen "+nVeces+" usuarios con el nombre igual \n Seleccione el que quiera en la tabla");
-                    busquedaConsultar(nomabus);
-                    MouseListener mouseListener = new MouseListener() {
-                        @Override
-                        public void mouseClicked(MouseEvent me) {
-                            int fila = jTable1.getSelectedRow();
-                            System.out.println(fila);
-                        }
-
-                        @Override
-                        public void mousePressed(MouseEvent me) {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public void mouseReleased(MouseEvent me) {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public void mouseEntered(MouseEvent me) {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public void mouseExited(MouseEvent me) {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-                    };
-                    MouseListener[] mouseListeners = jTable1.getMouseListeners();
-                    System.out.println(Arrays.toString(mouseListeners)); 
-                } catch (SQLException ex) {
-                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                if(nombreExistencia[0]==null){
-                    JOptionPane.showMessageDialog(rootPane, "No se encontro a "+nomabus);
-                } else {
-                    JL_ID2.setText(resultado[0]);
-                    JT_Nombre.setText(resultado[1]);
-                    JT_Apellido.setText(resultado[2]);
-                    JT_Domicilio.setText(resultado[3]);
-                    JT_Telefono.setText(resultado[4]);
-                    JT_Email.setText(resultado[5]);
-
-                    try {
-                        SimpleDateFormat formato = new SimpleDateFormat("dd/MMM/yyyy");
-                        Date fechanac = formato.parse(resultado[6]);
-                        JD_DateChooser.setDate(fechanac);
-                    } catch (ParseException pex) {
-                        Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
-                    } finally {
-                        // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
-                        JB_Modificar.setVisible(true);
-                        JB_Eliminar.setVisible(true);
-                    }
-
-                    JT_Edad.setText(resultado[8]);
-
-                    if (resultado[7].equals("Masculino")) {
-                        JR_Masculino.setSelected(true);
-                    } else {
-                        JR_Femenino.setSelected(true);
-                    }
-                    mostrarFoto(Integer.parseInt(resultado[0]));
-                    // Error aqui
-                    // mostrarFoto(Integer.parseInt(JL_ID.getText()));
-
-                    // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
-                    if (!JL_ID2.getText().isEmpty()) {
-                        JB_Agregar.setEnabled(false);
-                    }
-                    try {
-                        consultar();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_JB_BuscarActionPerformed
-
-    private void JB_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ModificarActionPerformed
-        // TODO add your handling code here:
-        Metodos enlace = new Metodos();
-        String campo = "Campos:";
-
-        // ID de la persona buscada a modificar
-        int ID = Integer.parseInt(JL_ID2.getText());
-        System.out.println(ID);
-        String nombre = JT_Nombre.getText().toUpperCase();
-        String apellido = JT_Apellido.getText().toUpperCase();
-        String domicilio = JT_Domicilio.getText().toUpperCase();
-        String telefono = JT_Telefono.getText().toUpperCase();
-        String email = JT_Email.getText().toUpperCase();
-        int edad = Integer.parseInt(JT_Edad.getText());
-        String edadCampo = JT_Edad.getText();
-        Date fecha = JD_DateChooser.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
-        String fechaNacimiento = sdf.format(fecha);
-        String sexo;
-        if (JR_Masculino.isSelected()) {
-            sexo = "Masculino";
-        } else {
-
-            sexo = "Femenino";
-        }
-
-        // ---- Hacer una funcion para validar que si haya algo en el input -----
-
-        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi
-        // {nombre: valorNombre,
-            //  apellido: apellido,
-            //  etc,
-            //          }
-        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
-        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
-        // Nombre
-        if (nombre.isEmpty()) {
-            System.out.println("Nombre vacio");
-            campo = campo.concat("+Nombre");
-        }
-        // Apellido
-        if (apellido.isEmpty()) {
-            System.out.println("Apellido vacio");
-            campo = campo.concat("+Apellido");
-        }
-        // Domicilio
-        if (domicilio.isEmpty()) {
-            System.out.println("Domicilio vacio");
-            campo = campo.concat("+Domicilio");
-        }
-        // Telefono
-        if (telefono.isEmpty()) {
-            System.out.println("Telefono vacio");
-            campo = campo.concat("+Telefono");
-        }
-        // Email
-        if (email.isEmpty()) {
-            System.out.println("Email vacio");
-            campo = campo.concat("+Email");
-        }
-        // Faltaria la fecha la cual se puede sacar con la edad
-        // Edad
-        if (edadCampo.isEmpty()) {
-            System.out.println("Edad vacio");
-            campo = campo.concat("+Edad");
-        }
-
-        if ("Campos:".equals(campo)) {
-            System.out.println(campo);
-            // Si no hay ningun campo vacio
-            // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
-            //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
-            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
-            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres modificar al usuario?");
-            // Saber que retorna si presiona
-            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
-            System.out.println(nomabusPa);
-            if (0 == nomabusPa) {
-                // Metodos error
-                try {
-                    enlace.Modificar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud, ID);
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: " + e);
-                } finally {
-                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
-                }
-
-                System.exit(0);
-            } else {
-                System.out.println("Nos cancela");
-                System.exit(0);
-                System.out.println("ADIÓS");
-            }
-        } else {
-            // Split y luego popr
-            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
-        }
-
-        // Comprobacion de los input
-        // --Primero se tiene que comprobar que todos tengan algo, entonces
-        // ¿Como podemos comprobar que todods tengan algo?
-        // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
-        // Entonces podemos devolver una alerta que diga que falta
-        // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
-    }//GEN-LAST:event_JB_ModificarActionPerformed
-
-    private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
-        // TODO add your handling code here:
-
-        //
-        String campo = "Campos:";
-        String nombre = JT_Nombre.getText().toUpperCase();
-        String apellido = JT_Apellido.getText().toUpperCase();
-        String domicilio = JT_Domicilio.getText().toUpperCase();
-        String telefono = JT_Telefono.getText().toUpperCase();
-        String email = JT_Email.getText().toUpperCase();
-        int edad = Integer.parseInt(JT_Edad.getText());
-        String edadCampo = JT_Edad.getText();
-        Date fecha = JD_DateChooser.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
-        String fechaNacimiento = sdf.format(fecha);
-        String sexo;
-
-        if(JR_Masculino.isSelected()){
-            sexo = "Masculino";
-        } else {
-
-            sexo = "Femenino";
-        }
-
-        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi
-        // {nombre: valorNombre,
-            //  apellido: apellido,
-            //  etc,
-            //          }
-        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
-        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
-        // Nombre
-        if(nombre.isEmpty()){
-            System.out.println("Nombre vacio");
-            campo = campo.concat("+Nombre");
-        }
-        // Apellido
-        if (apellido.isEmpty()) {
-            System.out.println("Apellido vacio");
-            campo = campo.concat("+Apellido");
-        }
-        // Domicilio
-        if (domicilio.isEmpty()) {
-            System.out.println("Domicilio vacio");
-            campo = campo.concat("+Domicilio");
-        }
-        // Telefono
-        if (telefono.isEmpty()) {
-            System.out.println("Telefono vacio");
-            campo = campo.concat("+Telefono");
-        }
-        // Email
-        if (email.isEmpty()) {
-            System.out.println("Email vacio");
-            campo = campo.concat("+Email");
-        }
-        // Faltaria la fecha la cual se puede sacar con la edad
-        // Edad
-        if(edadCampo.isEmpty()){
-            System.out.println("Edad vacio");
-            campo = campo.concat("+Edad");
-        }
-
-        if("Campos:".equals(campo)){
-            System.out.println(campo);
-            // Si no hay ningun campo vacio
-            // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
-            //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
-            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
-
-            // Luego podemos mandar a llamar las validaciones, si este estan bien, entonces podemos ya psaar al pregunta
-            // de que si queremos agregar
-            // Por el momento asi esta bien, luego hacemos una funcion para checar si las validaciones de los campos estan bien
-
-            //@todo
-            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere agregar?");
-            // Saber que retorna si presiona
-            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
-            System.out.println(nomabusPa);
-            if(0 == nomabusPa){
-                // Metodos error
-                try {
-                    Metodos enlace = new Metodos();
-                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: "+e);
-                } finally {
-                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
-                }
-
-                System.exit(0);
-            } else {
-                System.out.println("Nos cancela");
-                System.exit(0);
-                System.out.println("ADIÓS");
-            }
-        } else {
-            // Split y luego pop
-            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
-        }
-
-        // Comprobacion de los input
-        // --Primero se tiene que comprobar que todos tengan algo, entonces
-        // ¿Como podemos comprobar que todods tengan algo?
-        // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
-        // Entonces podemos devolver una alerta que diga que falta
-        // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
-
-    }//GEN-LAST:event_JB_AgregarActionPerformed
 
     private void JT_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusLost
         // TODO add your handling code here:
@@ -1160,6 +838,372 @@ public final class Captura extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void JB_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        JB_Agregar.setEnabled(true);
+    }//GEN-LAST:event_JB_LimpiarActionPerformed
+
+    private void JB_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SalirActionPerformed
+        // TODO add your handling code here:
+
+        System.exit(0);
+        System.out.println("ADIÓS");
+    }//GEN-LAST:event_JB_SalirActionPerformed
+
+    private void JB_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EliminarActionPerformed
+        // TODO add your handling code here:
+        Metodos enlace = new Metodos();
+        int ID = Integer.parseInt(JL_ID2.getText());
+        int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere eliminar?");
+        if (nomabusPa == 0) {
+            try {
+                enlace.Eliminar(ID);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "NO SE ENCONTRÓ A: " + ID);
+
+            }
+        }
+        
+        try {
+            // Comprobacion de los input
+            // --Primero se tiene que comprobar que todos tengan algo, entonces
+            // ¿Como podemos comprobar que todods tengan algo?
+            // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
+            // Entonces podemos devolver una alerta que diga que falta
+            // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
+
+            consultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_JB_EliminarActionPerformed
+
+    private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BuscarActionPerformed
+        Metodos enlace = new Metodos();
+        nomabus = JOptionPane.showInternalInputDialog(rootPane, "Nombre a Buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+        if (nomabus != null) {
+
+            String[] resultado = null;
+            int nVeces = enlace.vecesRepetidas(nomabus);
+            // Hacer un metodo para checar si existe el usuario y si no mostrar wea
+            String[] nombreExistencia = enlace.existenciaUsuario(nomabus);
+            resultado = enlace.Buscar(nomabus);
+
+            if(nVeces>1){
+                try {
+                    jTable1.setEnabled(true);
+                    JOptionPane.showMessageDialog(rootPane, "Existen "+nVeces+" usuarios con el nombre igual \n Seleccione el que quiera en la tabla");
+                    busquedaConsultar(nomabus);
+                    MouseListener mouseListener = new MouseListener() {
+                        @Override
+                        public void mouseClicked(MouseEvent me) {
+                            int fila = jTable1.getSelectedRow();
+                            System.out.println(fila);
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent me) {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+                    };
+                    MouseListener[] mouseListeners = jTable1.getMouseListeners();
+                    System.out.println(Arrays.toString(mouseListeners));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                if(nombreExistencia[0]==null){
+                    JOptionPane.showMessageDialog(rootPane, "No se encontro a "+nomabus);
+                } else {
+                    JL_ID2.setText(resultado[0]);
+                    JT_Nombre.setText(resultado[1]);
+                    JT_Apellido.setText(resultado[2]);
+                    JT_Domicilio.setText(resultado[3]);
+                    JT_Telefono.setText(resultado[4]);
+                    JT_Email.setText(resultado[5]);
+
+                    try {
+                        SimpleDateFormat formato = new SimpleDateFormat("dd/MMM/yyyy");
+                        Date fechanac = formato.parse(resultado[6]);
+                        JD_DateChooser.setDate(fechanac);
+                    } catch (ParseException pex) {
+                        Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, pex);
+                    } finally {
+                        // Si se encuentra entonces podemos mostrar el boton para modificar con los datos que se tienen y el ID
+                        JB_Modificar.setVisible(true);
+                        JB_Eliminar.setVisible(true);
+                    }
+
+                    JT_Edad.setText(resultado[8]);
+
+                    if (resultado[7].equals("Masculino")) {
+                        JR_Masculino.setSelected(true);
+                    } else {
+                        JR_Femenino.setSelected(true);
+                    }
+                    mostrarFoto(Integer.parseInt(resultado[0]));
+                    // Error aqui
+                    // mostrarFoto(Integer.parseInt(JL_ID.getText()));
+
+                    // Si en la parte del ID no esta vacio, entonces se va a deshabilitar el boton
+                    if (!JL_ID2.getText().isEmpty()) {
+                        JB_Agregar.setEnabled(false);
+                    }
+                    try {
+                        limpiar();
+                        consultar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_JB_BuscarActionPerformed
+
+    private void JB_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ModificarActionPerformed
+        // TODO add your handling code here:
+        Metodos enlace = new Metodos();
+        String campo = "Campos:";
+
+        // ID de la persona buscada a modificar
+        int ID = Integer.parseInt(JL_ID2.getText());
+        System.out.println(ID);
+        String nombre = JT_Nombre.getText().toUpperCase();
+        String apellido = JT_Apellido.getText().toUpperCase();
+        String domicilio = JT_Domicilio.getText().toUpperCase();
+        String telefono = JT_Telefono.getText().toUpperCase();
+        String email = JT_Email.getText().toUpperCase();
+        int edad = Integer.parseInt(JT_Edad.getText());
+        String edadCampo = JT_Edad.getText();
+        Date fecha = JD_DateChooser.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+        String fechaNacimiento = sdf.format(fecha);
+        String sexo;
+        if (JR_Masculino.isSelected()) {
+            sexo = "Masculino";
+        } else {
+
+            sexo = "Femenino";
+        }
+
+        // ---- Hacer una funcion para validar que si haya algo en el input -----
+
+        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi
+        // {nombre: valorNombre,
+            //  apellido: apellido,
+            //  etc,
+            //          }
+        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
+        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
+        // Nombre
+        if (nombre.isEmpty()) {
+            System.out.println("Nombre vacio");
+            campo = campo.concat("+Nombre");
+        }
+        // Apellido
+        if (apellido.isEmpty()) {
+            System.out.println("Apellido vacio");
+            campo = campo.concat("+Apellido");
+        }
+        // Domicilio
+        if (domicilio.isEmpty()) {
+            System.out.println("Domicilio vacio");
+            campo = campo.concat("+Domicilio");
+        }
+        // Telefono
+        if (telefono.isEmpty()) {
+            System.out.println("Telefono vacio");
+            campo = campo.concat("+Telefono");
+        }
+        // Email
+        if (email.isEmpty()) {
+            System.out.println("Email vacio");
+            campo = campo.concat("+Email");
+        }
+        // Faltaria la fecha la cual se puede sacar con la edad
+        // Edad
+        if (edadCampo.isEmpty()) {
+            System.out.println("Edad vacio");
+            campo = campo.concat("+Edad");
+        }
+
+        if ("Campos:".equals(campo)) {
+            System.out.println(campo);
+            // Si no hay ningun campo vacio
+            // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
+            //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
+            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres modificar al usuario?");
+            // Saber que retorna si presiona
+            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
+            System.out.println(nomabusPa);
+            if (0 == nomabusPa) {
+                // Metodos error
+                try {
+                    enlace.Modificar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud, ID);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: " + e);
+                } finally {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
+                }
+
+                System.exit(0);
+            } else {
+                System.out.println("Nos cancela");
+                System.exit(0);
+                System.out.println("ADIÓS");
+            }
+        } else {
+            // Split y luego popr
+            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
+        }
+
+        try {
+            // Comprobacion de los input
+            // --Primero se tiene que comprobar que todos tengan algo, entonces
+            // ¿Como podemos comprobar que todods tengan algo?
+            // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
+            // Entonces podemos devolver una alerta que diga que falta
+            // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
+
+            consultar();
+            limpiar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_JB_ModificarActionPerformed
+
+    private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
+        // TODO add your handling code here:
+
+        //
+        String campo = "Campos:";
+        String nombre = JT_Nombre.getText().toUpperCase();
+        String apellido = JT_Apellido.getText().toUpperCase();
+        String domicilio = JT_Domicilio.getText().toUpperCase();
+        String telefono = JT_Telefono.getText().toUpperCase();
+        String email = JT_Email.getText().toUpperCase();
+        int edad = Integer.parseInt(JT_Edad.getText());
+        String edadCampo = JT_Edad.getText();
+        Date fecha = JD_DateChooser.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+        String fechaNacimiento = sdf.format(fecha);
+        String sexo;
+
+        if(JR_Masculino.isSelected()){
+            sexo = "Masculino";
+        } else {
+
+            sexo = "Femenino";
+        }
+
+        // Todos estos ifs se pueden solucionar si se crea un objeto algo asi
+        // {nombre: valorNombre,
+            //  apellido: apellido,
+            //  etc,
+            //          }
+        // Y con este hubieramos podido iterar, y si alguno de estos no estaba vacio
+        // Entonces pudieramos agregar o concatenar el campo que esta vacio para que se muestre una alerta
+        // Nombre
+        if(nombre.isEmpty()){
+            System.out.println("Nombre vacio");
+            campo = campo.concat("+Nombre");
+        }
+        // Apellido
+        if (apellido.isEmpty()) {
+            System.out.println("Apellido vacio");
+            campo = campo.concat("+Apellido");
+        }
+        // Domicilio
+        if (domicilio.isEmpty()) {
+            System.out.println("Domicilio vacio");
+            campo = campo.concat("+Domicilio");
+        }
+        // Telefono
+        if (telefono.isEmpty()) {
+            System.out.println("Telefono vacio");
+            campo = campo.concat("+Telefono");
+        }
+        // Email
+        if (email.isEmpty()) {
+            System.out.println("Email vacio");
+            campo = campo.concat("+Email");
+        }
+        // Faltaria la fecha la cual se puede sacar con la edad
+        // Edad
+        if(edadCampo.isEmpty()){
+            System.out.println("Edad vacio");
+            campo = campo.concat("+Edad");
+        }
+
+        if("Campos:".equals(campo)){
+            System.out.println(campo);
+            // Si no hay ningun campo vacio
+            // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
+            //       -- Si es asi entonces vamos a mandar a llamar al metood agregar, si no podemos hacer otra cosa
+            // nomabus = JOptionPane.showInternalInputDialog(rootPane, "¿Seguro que quiere agregar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+
+            // Luego podemos mandar a llamar las validaciones, si este estan bien, entonces podemos ya psaar al pregunta
+            // de que si queremos agregar
+            // Por el momento asi esta bien, luego hacemos una funcion para checar si las validaciones de los campos estan bien
+
+            //@todo
+            int nomabusPa = JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quiere agregar?");
+            // Saber que retorna si presiona
+            // Si se presiona si, entonces retona un cero, si este no, devuelve un 1 o 2 de los botones
+            System.out.println(nomabusPa);
+            if(0 == nomabusPa){
+                // Metodos error
+                try {
+                    Metodos enlace = new Metodos();
+                    enlace.Agregar(nombre, apellido, domicilio, telefono, email, fechaNacimiento, sexo, edad, fis, longitud);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con error: "+e);
+                } finally {
+                    JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
+                }
+
+                System.exit(0);
+            } else {
+                System.out.println("Nos cancela");
+                System.exit(0);
+                System.out.println("ADIÓS");
+            }
+        } else {
+            // Split y luego pop
+            JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
+        }
+
+        try {
+            // Comprobacion de los input
+            // --Primero se tiene que comprobar que todos tengan algo, entonces
+            // ¿Como podemos comprobar que todods tengan algo?
+            // ¿Podemos hacer un objeto y de ahi iterar para checar sus valores, y si los que son string no tienen nada en su posicion [0]
+            // Entonces podemos devolver una alerta que diga que falta
+            // __ Entonces podemos usar el metodo isEmpty para checar si no hay nada
+
+            consultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_JB_AgregarActionPerformed
+
     private Image convertirImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Iterator lector = ImageIO.getImageReadersByFormatName("jpg");
@@ -1202,6 +1246,7 @@ public final class Captura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JT_Email;
     private javax.swing.JTextField JT_Nombre;
     private javax.swing.JTextField JT_Telefono;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
